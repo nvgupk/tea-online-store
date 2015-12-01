@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+	<session-factory>
+
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/TeaOnlineStore</property>
+		<property name="hibernate.connection.username">postgres</property>
+		<property name="hibernate.connection.password">380347543770kuzy</property>
+		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+		<mapping class="com.teaonlinestore.model.AtributeValueText" />
+		<mapping class="com.teaonlinestore.model.Attribute" />
+		<mapping class="com.teaonlinestore.model.AttributeValueDouble" />
+		<mapping class="com.teaonlinestore.model.Category" />
+		<mapping class="com.teaonlinestore.model.Customer" />
+		<mapping class="com.teaonlinestore.model.Delivery" />
+		<mapping class="com.teaonlinestore.model.Peyment" />
+		<mapping class="com.teaonlinestore.model.Product" />
+		<mapping class="com.teaonlinestore.model.Purchase" />
+		<mapping class="com.teaonlinestore.model.PurchaseProduct" />
+
+	</session-factory>
+
+</hibernate-configuration>
