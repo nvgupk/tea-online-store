@@ -24,19 +24,29 @@ public class Purchase implements java.io.Serializable {
 	@Column(name = "purchase_id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long purchaseId;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id", nullable = false)
 	private Customer customer;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "delivery_id", nullable = false)
 	private Delivery delivery;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "peyment_id", nullable = false)
 	private Peyment peyment;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "purchase_status_id", nullable = false)
+	private PurchaseStatus purchaseStatus;
+	
 	@Column(name = "purchase_date", nullable = false, length = 13)
 	private Date purchaseDate;
+	
 	@Column(name = "additional_info")
 	private String additionalInfo;
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "purchase")
 	private List<PurchaseProduct> purchaseProducts = new ArrayList<PurchaseProduct>();
 
@@ -118,6 +128,14 @@ public class Purchase implements java.io.Serializable {
 
 	public void setpurchaseproducts(List<PurchaseProduct> purchaseProducts) {
 		this.purchaseProducts = purchaseProducts;
+	}
+	
+	public PurchaseStatus getPurchaseStatus() {
+		return this.purchaseStatus;
+	}
+
+	public void setPurchaseStatus(PurchaseStatus purchaseStatus) {
+		this.purchaseStatus = purchaseStatus;
 	}
 
 }
