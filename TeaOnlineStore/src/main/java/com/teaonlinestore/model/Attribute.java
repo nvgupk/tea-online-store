@@ -18,36 +18,36 @@ public class Attribute implements java.io.Serializable {
 	@Id
 	@Column(name = "attribute_id", nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long attributeId;
+	private Long attributeId;
 	@Column(name = "name", nullable = false)
 	private String name;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "attribute")
-	private List<AtributeValueText> atributeValueTexts = new ArrayList<AtributeValueText>();
+	private List<AttributeValueText> attributeValueTexts = new ArrayList<AttributeValueText>();
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "attribute")
 	private List<AttributeValueDouble> attributeValueDoubles = new ArrayList<AttributeValueDouble>();
 
 	public Attribute() {
 	}
 
-	public Attribute(long attributeId, String name) {
+	public Attribute(Long attributeId, String name) {
 		this.attributeId = attributeId;
 		this.name = name;
 	}
 
-	public Attribute(long attributeId, String name,
-			List<AtributeValueText> atributeValueTexts,
+	public Attribute(Long attributeId, String name,
+			List<AttributeValueText> attributeValueTexts,
 			List<AttributeValueDouble> attributeValueDoubles) {
 		this.attributeId = attributeId;
 		this.name = name;
-		this.atributeValueTexts = atributeValueTexts;
+		this.attributeValueTexts = attributeValueTexts;
 		this.attributeValueDoubles = attributeValueDoubles;
 	}
 
-	public long getAttributeId() {
+	public Long getAttributeId() {
 		return this.attributeId;
 	}
 
-	public void setAttributeId(long attributeId) {
+	public void setAttributeId(Long attributeId) {
 		this.attributeId = attributeId;
 	}
 
@@ -59,12 +59,12 @@ public class Attribute implements java.io.Serializable {
 		this.name = name;
 	}
 
-	public List<AtributeValueText> getAtributevaluetexts() {
-		return this.atributeValueTexts;
+	public List<AttributeValueText> getAtributevaluetexts() {
+		return this.attributeValueTexts;
 	}
 
-	public void setAtributevaluetexts(List<AtributeValueText> atributeValueTexts) {
-		this.atributeValueTexts = atributeValueTexts;
+	public void setAtributevaluetexts(List<AttributeValueText> attributeValueTexts) {
+		this.attributeValueTexts = attributeValueTexts;
 	}
 
 	public List<AttributeValueDouble> getAttributevaluedoubles() {

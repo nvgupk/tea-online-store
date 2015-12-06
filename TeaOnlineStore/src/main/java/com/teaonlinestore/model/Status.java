@@ -13,37 +13,37 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "purchase_status", schema = "public")
-public class PurchaseStatus implements java.io.Serializable {
+@Table(name = "status", schema = "public")
+public class Status implements java.io.Serializable {
 	@Id
-	@Column(name = "purchase_status_id", nullable = false)
-	private long purchaseStatusId;
+	@Column(name = "status_id", nullable = false)
+	private Long statusId;
 	@Column(name = "name", nullable = false)
 	private String name;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "purchaseStatus")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "status")
 	private List<Purchase> purchases = new ArrayList<Purchase>(0);
 
-	public PurchaseStatus() {
+	public Status() {
 	}
 
-	public PurchaseStatus(long purchaseStatusId, String name) {
-		this.purchaseStatusId = purchaseStatusId;
+	public Status(Long statusId, String name) {
+		this.statusId = statusId;
 		this.name = name;
 	}
 
-	public PurchaseStatus(long purchaseStatusId, String name, List<Purchase> purchases) {
-		this.purchaseStatusId = purchaseStatusId;
+	public Status(Long statusId, String name, List<Purchase> purchases) {
+		this.statusId = statusId;
 		this.name = name;
 		this.purchases = purchases;
 	}
 
 	
-	public long getPurchaseStatusId() {
-		return this.purchaseStatusId;
+	public Long getStatusId() {
+		return this.statusId;
 	}
 
-	public void setPurchaseStatusId(long purchaseStatusId) {
-		this.purchaseStatusId = purchaseStatusId;
+	public void setStatusId(Long statusId) {
+		this.statusId = statusId;
 	}
 
 	

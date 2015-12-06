@@ -18,7 +18,7 @@ public class Customer implements java.io.Serializable {
 	@Id
 	@Column(name = "customer_id", nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long customerId;
+	private Long customerId;
 	@Column(name = "first_name", nullable = false)
 	private String firstName;
 	@Column(name = "last_name", nullable = false)
@@ -37,7 +37,7 @@ public class Customer implements java.io.Serializable {
 	public Customer() {
 	}
 
-	public Customer(long customerId, String firstName, String lastName,
+	public Customer(Long customerId, String firstName, String lastName,
 			String email, String phoneNumber, String address) {
 		this.customerId = customerId;
 		this.firstName = firstName;
@@ -47,7 +47,7 @@ public class Customer implements java.io.Serializable {
 		this.address = address;
 	}
 
-	public Customer(long customerId, String firstName, String lastName,
+	public Customer(Long customerId, String firstName, String lastName,
 			String email, String phoneNumber, String password, String address,
 			List<Purchase> purchases) {
 		this.customerId = customerId;
@@ -61,11 +61,11 @@ public class Customer implements java.io.Serializable {
 	}
 
 	
-	public long getCustomerId() {
+	public Long getCustomerId() {
 		return this.customerId;
 	}
 
-	public void setCustomerId(long customerId) {
+	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
 	}
 

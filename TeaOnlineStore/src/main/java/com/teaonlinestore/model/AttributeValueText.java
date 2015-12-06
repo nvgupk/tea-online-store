@@ -14,11 +14,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "atributevaluetext", schema = "public")
-public class AtributeValueText implements java.io.Serializable {
+public class AttributeValueText implements java.io.Serializable {
 	@Id
 	@Column(name = "attribute_value_text_id", nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long attributeValueTextId;
+	private Long attributeValueTextId;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "attribute_id", nullable = false)
 	private Attribute attribute;
@@ -28,17 +28,17 @@ public class AtributeValueText implements java.io.Serializable {
 	@Column(name = "value", nullable = false)
 	private String value;
 
-	public AtributeValueText() {
+	public AttributeValueText() {
 	}
 
-	public AtributeValueText(long attributeValueTextId, Attribute attribute,
+	public AttributeValueText(Long attributeValueTextId, Attribute attribute,
 			String value) {
 		this.attributeValueTextId = attributeValueTextId;
 		this.attribute = attribute;
 		this.value = value;
 	}
 
-	public AtributeValueText(long attributeValueTextId, Attribute attribute,
+	public AttributeValueText(Long attributeValueTextId, Attribute attribute,
 			Product product, String value) {
 		this.attributeValueTextId = attributeValueTextId;
 		this.attribute = attribute;
@@ -46,11 +46,11 @@ public class AtributeValueText implements java.io.Serializable {
 		this.value = value;
 	}
 
-	public long getAttributeValueTextId() {
+	public Long getAttributeValueTextId() {
 		return this.attributeValueTextId;
 	}
 
-	public void setAttributeValueTextId(long attributeValueTextId) {
+	public void setAttributeValueTextId(Long attributeValueTextId) {
 		this.attributeValueTextId = attributeValueTextId;
 	}
 

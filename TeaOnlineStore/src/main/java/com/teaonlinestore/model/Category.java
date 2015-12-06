@@ -20,7 +20,7 @@ public class Category implements java.io.Serializable {
 	@Id
 	@Column(name = "category_id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long categoryId;
+	private Long categoryId;
 	@Column(name = "name", nullable = false)
 	private String name;
 	@Column(name = "visible", nullable = false)
@@ -31,13 +31,13 @@ public class Category implements java.io.Serializable {
 	public Category() {
 	}
 
-	public Category(long categoryId, String name, boolean visible) {
+	public Category(Long categoryId, String name, boolean visible) {
 		this.categoryId = categoryId;
 		this.name = name;
 		this.visible = visible;
 	}
 
-	public Category(long categoryId, String name, boolean visible,
+	public Category(Long categoryId, String name, boolean visible,
 			List<Product> products) {
 		this.categoryId = categoryId;
 		this.name = name;
@@ -45,11 +45,11 @@ public class Category implements java.io.Serializable {
 		this.products = products;
 	}
 
-	public long getCategoryId() {
+	public Long getCategoryId() {
 		return this.categoryId;
 	}
 
-	public void setCategoryId(long categoryId) {
+	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
 	}
 

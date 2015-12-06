@@ -11,32 +11,32 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class PurchaseProductId implements java.io.Serializable {
 	@Column(name = "product_id", nullable = false)
-	private long productId;
+	private Long productId;
 	@Column(name = "purchase_id", nullable = false)
-	private long purchaseId;
+	private Long purchaseId;
 
 	public PurchaseProductId() {
 	}
 
-	public PurchaseProductId(long productId, long purchaseId) {
+	public PurchaseProductId(Long productId, Long purchaseId) {
 		this.productId = productId;
 		this.purchaseId = purchaseId;
 	}
 
-	public long getProductId() {
+	public Long getProductId() {
 		return this.productId;
 	}
 
-	public void setProductId(long productId) {
+	public void setProductId(Long productId) {
 		this.productId = productId;
 	}
 
 	
-	public long getPurchaseId() {
+	public Long getPurchaseId() {
 		return this.purchaseId;
 	}
 
-	public void setPurchaseId(long purchaseId) {
+	public void setPurchaseId(Long purchaseId) {
 		this.purchaseId = purchaseId;
 	}
 
@@ -55,8 +55,8 @@ public class PurchaseProductId implements java.io.Serializable {
 
 	public int hashCode() {
 		int result = 17;
-		result = 37 * result + (int) this.getProductId();
-		result = 37 * result + (int) this.getPurchaseId();
+		result = (int) (37 * result + this.getProductId());
+		result = (int) (37 * result + this.getPurchaseId());
 		return result;
 	}
 

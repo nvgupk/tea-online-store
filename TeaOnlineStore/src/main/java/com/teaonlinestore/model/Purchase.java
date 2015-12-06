@@ -23,7 +23,7 @@ public class Purchase implements java.io.Serializable {
 	@Id
 	@Column(name = "purchase_id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long purchaseId;
+	private Long purchaseId;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id", nullable = false)
@@ -38,8 +38,8 @@ public class Purchase implements java.io.Serializable {
 	private Peyment peyment;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "purchase_status_id", nullable = false)
-	private PurchaseStatus purchaseStatus;
+	@JoinColumn(name = "status_id", nullable = false)
+	private Status status;
 	
 	@Column(name = "purchase_date", nullable = false, length = 13)
 	private Date purchaseDate;
@@ -53,7 +53,7 @@ public class Purchase implements java.io.Serializable {
 	public Purchase() {
 	}
 
-	public Purchase(long purchaseId, Customer customer, Delivery delivery,
+	public Purchase(Long purchaseId, Customer customer, Delivery delivery,
 			Peyment peyment, Date purchaseDate) {
 		this.purchaseId = purchaseId;
 		this.customer = customer;
@@ -62,7 +62,7 @@ public class Purchase implements java.io.Serializable {
 		this.purchaseDate = purchaseDate;
 	}
 
-	public Purchase(long purchaseId, Customer customer, Delivery delivery,
+	public Purchase(Long purchaseId, Customer customer, Delivery delivery,
 			Peyment peyment, Date purchaseDate, String additionalInfo,
 			List<PurchaseProduct> purchaseproducts) {
 		this.purchaseId = purchaseId;
@@ -74,11 +74,11 @@ public class Purchase implements java.io.Serializable {
 		this.purchaseProducts = purchaseproducts;
 	}
 
-	public long getpurchaseId() {
+	public Long getpurchaseId() {
 		return this.purchaseId;
 	}
 
-	public void setpurchaseId(long purchaseId) {
+	public void setpurchaseId(Long purchaseId) {
 		this.purchaseId = purchaseId;
 	}
 
@@ -130,12 +130,12 @@ public class Purchase implements java.io.Serializable {
 		this.purchaseProducts = purchaseProducts;
 	}
 	
-	public PurchaseStatus getPurchaseStatus() {
-		return this.purchaseStatus;
+	public Status getPurchaseStatus() {
+		return this.status;
 	}
 
-	public void setPurchaseStatus(PurchaseStatus purchaseStatus) {
-		this.purchaseStatus = purchaseStatus;
+	public void setPurchaseStatus(Status status) {
+		this.status = status;
 	}
 
 }

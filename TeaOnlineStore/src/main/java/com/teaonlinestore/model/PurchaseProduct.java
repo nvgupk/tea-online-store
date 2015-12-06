@@ -23,13 +23,13 @@ public class PurchaseProduct implements java.io.Serializable {
 	@Column(name = "price", nullable = false)
 	private double price;
 	@Column(name = "quantity", nullable = false)
-	private long quantity;
+	private Long quantity;
 
 	public PurchaseProduct() {
 	}
 
 	public PurchaseProduct(PurchaseProductId id, Product product,
-			Purchase purchase, double price, long quantity) {
+			Purchase purchase, double price, Long quantity) {
 		this.id = id;
 		this.product = product;
 		this.purchase = purchase;
@@ -71,11 +71,11 @@ public class PurchaseProduct implements java.io.Serializable {
 		this.price = price;
 	}
 
-	public long getQuantity() {
+	public Long getQuantity() {
 		return this.quantity;
 	}
 
-	public void setQuantity(long quantity) {
+	public void setQuantity(Long quantity) {
 		this.quantity = quantity;
 	}
 

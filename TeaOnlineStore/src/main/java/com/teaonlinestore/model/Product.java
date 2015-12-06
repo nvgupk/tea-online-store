@@ -22,7 +22,7 @@ public class Product implements java.io.Serializable {
 	@Id
 	@Column(name = "product_id", nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long productId;
+	private Long productId;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "category_id", nullable = false)
 	private Category category;
@@ -35,14 +35,14 @@ public class Product implements java.io.Serializable {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
 	private List<PurchaseProduct> purhaseProducts = new ArrayList<PurchaseProduct>();
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
-	private List<AtributeValueText> atributeValueTexts = new ArrayList<AtributeValueText>();
+	private List<AttributeValueText> attributeValueTexts = new ArrayList<AttributeValueText>();
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
 	private List<AttributeValueDouble> attributeValueDoubles = new ArrayList<AttributeValueDouble>();
 
 	public Product() {
 	}
 
-	public Product(long productId, Category category, String name,
+	public Product(Long productId, Category category, String name,
 			int quentity, double price) {
 		this.productId = productId;
 		this.category = category;
@@ -51,9 +51,9 @@ public class Product implements java.io.Serializable {
 		this.price = price;
 	}
 
-	public Product(long productId, Category category, String name,
+	public Product(Long productId, Category category, String name,
 			int quentity, double price, List<PurchaseProduct> purhaseProducts,
-			List<AtributeValueText> atributeValueTexts,
+			List<AttributeValueText> attributeValueTexts,
 			List<AttributeValueDouble> attributeValueDoubles) {
 		this.productId = productId;
 		this.category = category;
@@ -61,15 +61,15 @@ public class Product implements java.io.Serializable {
 		this.quentity = quentity;
 		this.price = price;
 		this.purhaseProducts = purhaseProducts;
-		this.atributeValueTexts = atributeValueTexts;
+		this.attributeValueTexts = attributeValueTexts;
 		this.attributeValueDoubles = attributeValueDoubles;
 	}
 
-	public long getProductId() {
+	public Long getProductId() {
 		return this.productId;
 	}
 
-	public void setProductId(long productId) {
+	public void setProductId(Long productId) {
 		this.productId = productId;
 	}
 
@@ -113,12 +113,12 @@ public class Product implements java.io.Serializable {
 		this.purhaseProducts = purhaseProducts;
 	}
 
-	public List<AtributeValueText> getAtributeValueTexts() {
-		return this.atributeValueTexts;
+	public List<AttributeValueText> getAtributeValueTexts() {
+		return this.attributeValueTexts;
 	}
 
-	public void setAtributeValueTexts(List<AtributeValueText> atributeValueTexts) {
-		this.atributeValueTexts = atributeValueTexts;
+	public void setAtributeValueTexts(List<AttributeValueText> attributeValueTexts) {
+		this.attributeValueTexts = attributeValueTexts;
 	}
 
 	public List<AttributeValueDouble> getAttributeValueDoubles() {

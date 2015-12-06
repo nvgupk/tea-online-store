@@ -19,7 +19,7 @@ public class Delivery implements java.io.Serializable {
 	@Id
 	@Column(name = "delivery_id", nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long deliveryId;
+	private Long deliveryId;
 	@Column(name = "name", nullable = false)
 	private String name;
 	@Column(name = "description")
@@ -36,13 +36,13 @@ public class Delivery implements java.io.Serializable {
 	public Delivery() {
 	}
 
-	public Delivery(long deliveryId, String name, boolean visible) {
+	public Delivery(Long deliveryId, String name, boolean visible) {
 		this.deliveryId = deliveryId;
 		this.name = name;
 		this.visible = visible;
 	}
 
-	public Delivery(long deliveryId, String name, String description,
+	public Delivery(Long deliveryId, String name, String description,
 			double price, String tariff, boolean visible,
 			List<Purchase> purchases) {
 		this.deliveryId = deliveryId;
@@ -54,11 +54,11 @@ public class Delivery implements java.io.Serializable {
 		this.purchases = purchases;
 	}
 
-	public long getDeliveryId() {
+	public Long getDeliveryId() {
 		return this.deliveryId;
 	}
 
-	public void setDeliveryId(long deliveryId) {
+	public void setDeliveryId(Long deliveryId) {
 		this.deliveryId = deliveryId;
 	}
 

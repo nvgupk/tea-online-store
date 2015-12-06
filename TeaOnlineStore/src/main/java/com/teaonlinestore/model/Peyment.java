@@ -18,7 +18,7 @@ public class Peyment implements java.io.Serializable {
 	@Id
 	@Column(name = "peyment_id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long peymentId;
+	private Long peymentId;
 	@Column(name = "name", nullable = false)
 	private String name;
 	@Column(name = "description")
@@ -31,13 +31,13 @@ public class Peyment implements java.io.Serializable {
 	public Peyment() {
 	}
 
-	public Peyment(long peymentId, String name, boolean visible) {
+	public Peyment(Long peymentId, String name, boolean visible) {
 		this.peymentId = peymentId;
 		this.name = name;
 		this.visible = visible;
 	}
 
-	public Peyment(long peymentId, String name, String description,
+	public Peyment(Long peymentId, String name, String description,
 			boolean visible, List<Purchase> purchases) {
 		this.peymentId = peymentId;
 		this.name = name;
@@ -46,11 +46,11 @@ public class Peyment implements java.io.Serializable {
 		this.purchases = purchases;
 	}
 
-	public long getPeymentId() {
+	public Long getPeymentId() {
 		return this.peymentId;
 	}
 
-	public void setPeymentId(long peymentId) {
+	public void setPeymentId(Long peymentId) {
 		this.peymentId = peymentId;
 	}
 

@@ -21,7 +21,7 @@ public class AttributeValueDouble implements java.io.Serializable {
 	@Id
 	@Column(name = "attribute_value_double_id", nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long attributeValueDoubleId;
+	private Long attributeValueDoubleId;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "attribute_id", nullable = false)
 	private Attribute attribute;
@@ -34,14 +34,14 @@ public class AttributeValueDouble implements java.io.Serializable {
 	public AttributeValueDouble() {
 	}
 
-	public AttributeValueDouble(long attributeValueDoubleId,
+	public AttributeValueDouble(Long attributeValueDoubleId,
 			Attribute attribute, double value) {
 		this.attributeValueDoubleId = attributeValueDoubleId;
 		this.attribute = attribute;
 		this.value = value;
 	}
 
-	public AttributeValueDouble(long attributeValueDoubleId,
+	public AttributeValueDouble(Long attributeValueDoubleId,
 			Attribute attribute, Product product, double value) {
 		this.attributeValueDoubleId = attributeValueDoubleId;
 		this.attribute = attribute;
@@ -50,11 +50,11 @@ public class AttributeValueDouble implements java.io.Serializable {
 	}
 
 	
-	public long getAttributeValueDecimal() {
+	public Long getAttributeValueDecimal() {
 		return this.attributeValueDoubleId;
 	}
 
-	public void setAttributeValueDecimal(long attributeValueDoubleId) {
+	public void setAttributeValueDecimal(Long attributeValueDoubleId) {
 		this.attributeValueDoubleId = attributeValueDoubleId;
 	}
 
