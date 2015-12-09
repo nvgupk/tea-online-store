@@ -1,6 +1,6 @@
 package com.teaonlinestore.model;
 // default package
-// Generated 11 лист. 2015 17:29:02 by Hibernate Tools 4.3.1
+// Generated 11 пїЅпїЅпїЅпїЅ. 2015 17:29:02 by Hibernate Tools 4.3.1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "atributevaluetext", schema = "public")
+@Table(name = "attributevaluetext", schema = "public")
 public class AttributeValueText implements java.io.Serializable {
 	@Id
 	@Column(name = "attribute_value_text_id", nullable = false)

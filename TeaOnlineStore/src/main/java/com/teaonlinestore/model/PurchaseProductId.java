@@ -1,6 +1,6 @@
 package com.teaonlinestore.model;
 // default package
-// Generated 11 лист. 2015 17:29:02 by Hibernate Tools 4.3.1
+// Generated 11 пїЅпїЅпїЅпїЅ. 2015 17:29:02 by Hibernate Tools 4.3.1
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
