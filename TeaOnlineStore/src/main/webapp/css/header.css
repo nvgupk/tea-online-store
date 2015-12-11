@@ -1,0 +1,149 @@
+#header {
+	font: 16px Verdana;
+	height:158px;
+	width:1100px;
+	padding-top:72px;
+	margin:0 auto 0 auto;
+	background-color:#FBFBF9;
+	position:relative;
+}
+
+#header img {
+	position:absolute;
+	left:15px;
+	top:65px;
+}
+
+#top_header {
+	height:40px;
+	background-color:#5A554F;
+	border: 1px solid #5A554F;
+	border-radius:3px;
+}
+
+#mid_header {
+	font: 14px Verdana;
+	color:#68635C;
+	height:28px;
+	width:400px;
+	float:right;
+	margin:18px 20px 0 0;
+}
+
+#mid_header div {
+	margin:0 15px 0 0;
+	float:left;
+}
+
+#bot_header{
+	height:60px;
+	margin-top:56px;
+	background-color:#FBFBFB;
+	border: 1px solid #CCCCCC;
+}
+
+#menu {
+	color:#68635C;
+	padding:20px 0 0 0;
+	height:40px;
+	margin:0px;
+}
+
+#menu li {	
+	position:relative;
+	list-style:none;
+	padding:0 20px;
+	float:left;
+	height:40px;
+}
+
+#menu li ul{
+	font-size: 14px;
+	white-space:nowrap;
+	position:absolute;
+	display:none;
+	top:40px;
+	left:-1px;
+	margin:0;
+	padding:0;
+	border:1px solid #CCCCCC;
+}
+
+#menu li ul li {
+	float:none;
+	padding:5px 15px;
+	background-color:#FBFBFB;
+	height:auto;
+}
+
+#menu li:hover ul {
+  display: block;
+}
+
+#menu a, #mid_header a {
+	text-decoration:none;
+	color:#68635C;
+}
+
+#menu li:hover a, #mid_header a:hover {
+	color:#8EA452;
+}
+
+#menu li:hover ul a {
+	color:#68635C;
+}
+
+#menu li ul li:hover a {
+	color:#8EA452;
+}
+
+input[name="searchQuery"]{
+	border-left:1px solid #CCCCCC;
+	border-top:1px solid #CCCCCC;
+	border-bottom:1px solid #CCCCCC;
+	border-right:none;
+	border-radius:3px 0 0 3px;
+	font: 14px Verdana;
+	color:#666666;
+	background-color:#FBFBF9;
+	width:160px;
+	height:22px;
+	padding:0;
+	margin:0;
+	float:left;
+}
+
+input[name="searchQuery"]:focus{
+	background-color:#ffffff;
+}
+
+input[name="searchButton"] {
+	border-right:1px solid #819449;
+	border-top:1px solid #819449;
+	border-bottom:1px solid #819449;	
+	border-radius:0 3px 3px 0;
+	border-left:0;
+	font: 14px Verdana;
+	color:#ffffff;
+	width:74px;
+	height:24px;
+	padding:0;
+	margin:0;
+	background-color:#8BA04F;
+	
+}
+
+input[name="searchButton"]:hover {
+	color:#5A554F;
+	cursor:pointer;
+}
+
+input[name="searchButton"]:active {
+	border:4px solid #819449;
+}
+
+#top_header form {
+	float:right;
+	padding:0;
+	margin: 8px 22px 0 0;
+}

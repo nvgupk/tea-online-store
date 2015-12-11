@@ -1,0 +1,80 @@
+#wrapper {
+	font: 16px Verdana;
+	color:#68635c;
+	width:1100px;
+	margin:0 auto 0 auto;
+	background-color:#FFFFFF;
+}
+
+form {
+	padding:0;
+	margin:35px auto 0 auto;
+	width:476px;
+	
+}
+
+#l {
+	float:left;
+	margin:0 0 0 2px;
+}
+
+#r {
+	float:right;
+	margin:0 2px 0 0;
+}
+
+.datainput {
+	font: 14px Verdana;
+	color:#666666;
+	text-indent:5px;
+	width:220px;
+	height:22px;
+	padding:0;
+	margin:0;
+	border:2px solid #CCCCCC;
+	background-color:#FBFBF9;
+}
+
+.datainput:focus {
+	border: 2px solid #68635c;
+	background-color: #ffffff;
+}
+
+#advan {
+	color:#666666;
+	text-align:center;
+}
+
+h2 {
+	text-align:center;
+	color:#68635c;
+}
+
+.clear {
+	clear:both;
+}
+
+#confReg {
+	margin:0 auto 0 auto;
+	width:129px;
+}
+
+#confReg input {
+	height:25px;
+	margin:0;
+	padding:0;
+	background-color:#FBFBF9;
+	font: 14px Verdana;
+	color:#8EA452;
+	border:1px solid #CCCCCC;
+	border-radius:3px;
+}
+
+#confReg input:hover {
+	color:#ffffff;
+	background-color:#8BA04F;
+}
+
+#confReg input:active {
+	border:2px solid #819449;
+}
