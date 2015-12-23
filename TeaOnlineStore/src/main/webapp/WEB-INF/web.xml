@@ -8,7 +8,8 @@
   </filter>
   <filter-mapping>
     <filter-name>HeaderFilter</filter-name>
-    <url-pattern>/tea.jsp</url-pattern>
+    <url-pattern>/welcome.jsp</url-pattern>
+    <url-pattern>/product.jsp</url-pattern>
   </filter-mapping>
   <listener>
     <listener-class>com.teaonlinestore.web.AppInitializationListener</listener-class>
@@ -23,6 +24,16 @@
     <url-pattern>/HeaderController</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
-    <welcome-file>tea.jsp</welcome-file>
+    <welcome-file>welcome.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>FilterBarController</display-name>
+    <servlet-name>FilterBarController</servlet-name>
+    <servlet-class>com.teaonlinestore.web.FilterBarController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FilterBarController</servlet-name>
+    <url-pattern>/FilterBarController</url-pattern>
+  </servlet-mapping>
 </web-app>

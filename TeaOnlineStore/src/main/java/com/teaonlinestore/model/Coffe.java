@@ -18,19 +18,15 @@ public class Coffe extends Product {
 	@JoinColumn(name = "maker_id", nullable = false)
 	private Maker maker;
 	
-	@Column(name = "kind", nullable = false)
-	private String kind;
-	
 	@Column(name = "sort", nullable = false)
 	private String sort;
 	
 	public Coffe() {
 	}
 
-	public Coffe(Maker maker, String sort, String kind) {
+	public Coffe(Maker maker, String sort) {
 		this.maker = maker;
 		this.sort = sort;
-		this.kind = kind;
 	}
 
 	public Maker getMaker() {
@@ -39,14 +35,6 @@ public class Coffe extends Product {
 
 	public void setMaker(Maker maker) {
 		this.maker = maker;
-	}
-	
-	public String getKind() {
-		return this.kind;
-	}
-
-	public void setKind(String kind) {
-		this.kind = kind;
 	}
 
 	public String getSort() {

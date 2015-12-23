@@ -19,18 +19,14 @@ public class Tea extends Product {
 	@JoinColumn(name = "maker_id", nullable = false)
 	private Maker maker;
 	
-	@Column(name = "kind", nullable = false)
-	private String kind;
-	
-	@Column(name = "leaf shape", nullable = false)
+	@Column(name = "leaf_shape", nullable = false)
 	private String leafShape;
 
 	public Tea() {
 	}
 
-	public Tea(Maker maker, String kind, String leafShape) {
+	public Tea(Maker maker, String leafShape) {
 		this.maker = maker;
-		this.kind = kind;
 		this.leafShape = leafShape;
 	}
 
@@ -40,14 +36,6 @@ public class Tea extends Product {
 
 	public void setMaker(Maker maker) {
 		this.maker = maker;
-	}
-
-	public String getKind() {
-		return this.kind;
-	}
-
-	public void setKind(String kind) {
-		this.kind = kind;
 	}
 
 	public String getLeafShape() {

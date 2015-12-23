@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.hibernate.HibernateException;
 
 import com.teaonlinestore.dao.CategoryDao;
 import com.teaonlinestore.dao.DaoFactory;
@@ -41,7 +40,7 @@ public class CategoryManager implements CategoryManagerInterface {
 			HibernateUtil.beginTransaction();
 			categories = categoryDao.getAllCategory();
 			HibernateUtil.commitTransaction();
-		} catch(HibernateException ex) {
+		} catch(Exception ex) {
 			LOG.error("Get all Category transaction field", ex);
 		}
 		return categories;
@@ -53,9 +52,22 @@ public class CategoryManager implements CategoryManagerInterface {
 			HibernateUtil.beginTransaction();
 			categories = categoryDao.getCategoryByVisible(visible);
 			HibernateUtil.commitTransaction();
-		} catch(HibernateException ex) {
+		} catch(Exception ex) {
 			LOG.error("Get all Category transaction field", ex);
 		}
 		return categories;
 	}
+	
+	public Category getById(Long id) {
+		Category category = null;
+		try {
+			HibernateUtil.beginTransaction();
+			category = categoryDao.findByID(id);
+			HibernateUtil.commitTransaction();
+		} catch(Exception ex) {
+			LOG.error("Get Category by id transaction field", ex);
+		}
+		return category;
+	}
+	
 }

@@ -30,4 +30,15 @@ public class HibernateDaoFactory implements DaoFactory {
 		return new StatusDaoHibernate();
 	}
 	
+	public CoffeDao createCoffeDao() {
+		return new CoffeDaoHibernate();
+	}
+	
+	public MakerDao createMakerDao() {
+		return new MakerDaoHibernate();
+	}
+	
+	public TeaDao createTeaDao() {
+		return new TeaDaoHibernate();
+	}
 }

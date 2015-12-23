@@ -3,9 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<head>
-<link href="css/header.css" type="text/css" rel="stylesheet">
-</head>
+
 <div id="header">
 	<img src="Images/logo.png" width="218" height="75">
 	<div id="top_header">
@@ -32,12 +30,12 @@
 	</div>
 	<div id="bot_header">
 		<ul id="menu">
-			<c:forEach var="category" items="${requestScope.categories}">
-				<li><a href="#">${category.name}</a>
+			<c:forEach var="entry" items="${requestScope.categoryKinds}">
+				<li><a href="product.jsp?category_id=${entry.key.categoryId}">${entry.key.name}</a>
 					<ul>
-						<li><a href="#">Зелений чай</a></li>
-						<li><a href="#">Чорний чай</a></li>
-						<li><a href="#">Білий чай</a></li>
+						<c:forEach var="kind" items="${entry.value}">
+							<li><a href="product.jsp?category_id=${entry.key.categoryId}&kind=${kind}">${kind}</a></li>
+						</c:forEach>
 					</ul>
 				</li>
 			</c:forEach>

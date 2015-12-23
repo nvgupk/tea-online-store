@@ -10,15 +10,29 @@
 	</appender>
 
 	<appender name="dbErrorLog" class="org.apache.log4j.FileAppender">
-		<param name="file" value="/logs/dbError.log" />
+		<param name="file" value="/TeaOnlineStore/logs/dbError.log" />
 		<layout class="org.apache.log4j.PatternLayout">
-	<param name="ConversionPattern" value="%p %c: %m%n" />
+			<param name="ConversionPattern" value="%p %c: %m%n" />
 		</layout>
 	</appender>
 	
-	 <logger name="com.teaonlinestore.service" additivity="false">
+	<appender name="fileErrLog" class="org.apache.log4j.FileAppender">
+		<param name="file" value="/TeaOnlineStore/logs/file_error.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%p %c: %m%n" />
+		</layout>
+	</appender>
+	
+	<logger name="com.teaonlinestore.service" additivity="false">
         <level value="ERROR" />
         <appender-ref ref="dbErrorLog" />
+        <appender-ref ref="console" />
+    </logger>
+    
+    <logger name="com.teaonlinestore.utils.FileUtil" additivity="false">
+        <level value="ERROR" />
+        <appender-ref ref="fileErrLog" />
+        <appender-ref ref="console" />
     </logger>
 	
 	<root>

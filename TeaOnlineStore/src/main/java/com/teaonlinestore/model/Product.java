@@ -25,7 +25,7 @@ public class Product implements java.io.Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long productId;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "category_id", nullable = false)
 	private Category category;
 	
@@ -38,6 +38,9 @@ public class Product implements java.io.Serializable {
 	@Column(name = "price", nullable = false)
 	private double price;
 	
+	@Column(name = "kind", nullable = false)
+	private String kind;
+	
 	@Column(name = "description")
 	private String description;
 	
@@ -47,13 +50,14 @@ public class Product implements java.io.Serializable {
 	public Product() {
 	}
 
-	public Product(Long productId, Category category, String name, int quentity, double price, String descriprion) {
+	public Product(Long productId, Category category, String name, int quentity, double price, String kind, String descriprion) {
 		this.productId = productId;
 		this.category = category;
 		this.name = name;
 		this.quentity = quentity;
 		this.price = price;
 		this.description = descriprion;
+		this.kind = kind;
 	}
 
 	public Long getProductId() {
@@ -110,6 +114,14 @@ public class Product implements java.io.Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public String getKind() {
+		return this.kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
 	}
 
 }

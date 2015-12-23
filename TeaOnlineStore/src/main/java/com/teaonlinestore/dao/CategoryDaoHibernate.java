@@ -1,6 +1,5 @@
 package com.teaonlinestore.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -11,19 +10,17 @@ import com.teaonlinestore.utils.HibernateUtil;
 
 public class CategoryDaoHibernate extends GenericDaoHibernate<Category, Long> implements CategoryDao {
 	public List<Category> getAllCategory() {
-		List<Category> categories = new ArrayList<Category>();
 		Session session = HibernateUtil.getSession();
 		Query query = session.createQuery("from Category");
-		categories = query.list();
+		List<Category> categories = query.list();
 		return categories;
 	}
 	
 	public List<Category> getCategoryByVisible(boolean visible) {
-		List<Category> categories = new ArrayList<Category>();
 		Session session = HibernateUtil.getSession();
 		Query query = session.createQuery("from Category where visible = :visible");
 		query.setParameter("visible", visible);
-		categories = query.list();
+		List<Category> categories = query.list();
 		return categories;
 	}
 }

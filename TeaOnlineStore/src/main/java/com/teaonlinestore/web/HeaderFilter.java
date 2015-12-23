@@ -30,6 +30,8 @@ public class HeaderFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
+		String path = httpRequest.getRequestURI().substring(httpRequest.getContextPath().length() + 1);
+		request.setAttribute("path", path);
 		RequestDispatcher rd = httpRequest.getRequestDispatcher("/HeaderController");
 		rd.forward(httpRequest, httpResponse);
 	}

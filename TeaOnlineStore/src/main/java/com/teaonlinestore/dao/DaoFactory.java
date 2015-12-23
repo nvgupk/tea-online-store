@@ -9,4 +9,7 @@ public interface DaoFactory {
 	ProductDao createProductDao();
 	PurchaseDao createPurchaseDao();
 	StatusDao createStatusDao();
+	TeaDao createTeaDao();
+	CoffeDao createCoffeDao();
+	MakerDao createMakerDao();
 }

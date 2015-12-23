@@ -5,7 +5,7 @@
 
 	<session-factory>
 		
-		<property name="show_sql">false</property>
+		<property name="show_sql">true</property>
 		
 		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
 		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/TeaOnlineStore</property>
@@ -13,18 +13,24 @@
 		<property name="hibernate.connection.password">380347543770kuzy</property>
 		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<property name="hibernate.current_session_context_class">thread</property>
-		
-		<mapping class="com.teaonlinestore.model.AttributeValueText" />
-		<mapping class="com.teaonlinestore.model.Attribute" />
-		<mapping class="com.teaonlinestore.model.AttributeValueDouble" />
+
+		<property name="hibernate.c3p0.min_size">5</property>
+		<property name="hibernate.c3p0.max_size">20</property>
+		<property name="hibernate.c3p0.timeout">300</property>
+		<property name="hibernate.c3p0.max_statements">50</property>
+		<property name="hibernate.c3p0.idle_test_period">250</property>
+
 		<mapping class="com.teaonlinestore.model.Category" />
 		<mapping class="com.teaonlinestore.model.Customer" />
 		<mapping class="com.teaonlinestore.model.Delivery" />
 		<mapping class="com.teaonlinestore.model.Peyment" />
 		<mapping class="com.teaonlinestore.model.Product" />
+		<mapping class="com.teaonlinestore.model.Tea" />
+		<mapping class="com.teaonlinestore.model.Coffe" />
 		<mapping class="com.teaonlinestore.model.Purchase" />
 		<mapping class="com.teaonlinestore.model.PurchaseProduct" />
 		<mapping class="com.teaonlinestore.model.Status" />
+		<mapping class="com.teaonlinestore.model.Maker" />
 
 	</session-factory>
 
