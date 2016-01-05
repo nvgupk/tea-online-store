@@ -3,14 +3,17 @@ package com.teaonlinestore.service;
 import com.teaonlinestore.model.Category;
 
 public class ProductManagerFactory {
-	public static ProductManager createProductManager(Category category) {
+	public static ProductManagerInterface createProductManager(Category category) {
+		if(category == null) {
+			return null;
+		}
 		switch(category.getName().toLowerCase()) {
-			case "чай":
+			case "С‡Р°Р№":
 				return new TeaManager();
-			case "кава":
+			case "РєР°РІР°":
 				return new CoffeManager();
 			default:
-				return new ProductManager();
+				return null;
 		}
 	}
 }

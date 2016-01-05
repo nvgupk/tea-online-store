@@ -23,4 +23,6 @@ public class CategoryDaoHibernate extends GenericDaoHibernate<Category, Long> im
 		List<Category> categories = query.list();
 		return categories;
 	}
+	
+	
 }

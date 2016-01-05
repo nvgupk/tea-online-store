@@ -2,6 +2,8 @@ package com.teaonlinestore.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 
@@ -16,6 +18,17 @@ public class ProductManager implements ProductManagerInterface {
 	private DaoFactory daoFactory;
 	private ProductDao productDao;
 	
+	@Override
+	public Map<String, List<?>> getAttributeValues(Set<String> attributes) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Map<String, String> getAttributeNamesUA() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	public ProductManager() {
 		this(new HibernateDaoFactory());
 	}
@@ -25,14 +38,14 @@ public class ProductManager implements ProductManagerInterface {
 		productDao = daoFactory.createProductDao();
 	}
 	
-	public List<String> getProductKindsByCategory(Category category) {
+	public List<String> getProductKinds() {
 		List<String> kinds = new ArrayList<String>();
 		try {
 			HibernateUtil.beginTransaction();
-			kinds = productDao.getProductKindsByCategory(category);
+			//kinds = productDao.getProductKindsByCategory(category);
 			HibernateUtil.commitTransaction();
 		} catch (Exception ex){
-			LOG.error("Get kinds by Category transaction field", ex);
+			LOG.error("Get kinds by Category transaction failed", ex);
 		}
 		return kinds;
 	}

@@ -16,6 +16,13 @@
 		</layout>
 	</appender>
 	
+	<appender name="infoLog" class="org.apache.log4j.FileAppender">
+		<param name="file" value="/TeaOnlineStore/logs/info.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%p %c: %m%n" />
+		</layout>
+	</appender>
+	
 	<appender name="fileErrLog" class="org.apache.log4j.FileAppender">
 		<param name="file" value="/TeaOnlineStore/logs/file_error.log" />
 		<layout class="org.apache.log4j.PatternLayout">
@@ -33,6 +40,11 @@
         <level value="ERROR" />
         <appender-ref ref="fileErrLog" />
         <appender-ref ref="console" />
+    </logger>
+    
+    <logger name="com.teaonlinestore.web" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="infoLog" />
     </logger>
 	
 	<root>

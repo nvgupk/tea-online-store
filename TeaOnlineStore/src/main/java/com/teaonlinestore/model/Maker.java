@@ -76,5 +76,9 @@ public class Maker {
 	public void setCoffes(List<Coffe> coffes) {
 		this.coffes = coffes;
 	}
-
+	
+	@Override
+	public String toString() {
+		return name;
+	}
 }

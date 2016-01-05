@@ -6,10 +6,15 @@
 	background-color:#FFFFFF;
 }
 
+.required_star {
+	font: 12px Verdana;
+	color:#CA1F1C;
+}
+
 form {
 	padding:0;
 	margin:35px auto 0 auto;
-	width:476px;
+	width:510px;
 	
 }
 
@@ -21,6 +26,26 @@ form {
 #r {
 	float:right;
 	margin:0 2px 0 0;
+}
+
+#email_status_img {
+	visibility:hidden;
+	padding:0;
+}
+
+#confPassword_status_img {
+	visibility:hidden;
+	padding:0;
+}
+
+#password_status_img {
+	visibility:hidden;
+	padding:0;
+}
+
+#phonenumber_status_img {
+	visibility:hidden;
+	padding:0;
 }
 
 .datainput {
@@ -73,6 +98,7 @@ h2 {
 #confReg input:hover {
 	color:#ffffff;
 	background-color:#8BA04F;
+	cursor:pointer;
 }
 
 #confReg input:active {

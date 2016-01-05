@@ -10,18 +10,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import com.teaonlinestore.dao.TeaDao;
-import com.teaonlinestore.dao.TeaDaoHibernate;
 import com.teaonlinestore.model.Category;
 import com.teaonlinestore.service.CategoryManager;
 import com.teaonlinestore.service.CategoryManagerInterface;
-import com.teaonlinestore.service.ProductManager;
+import com.teaonlinestore.service.ProductManagerFactory;
 import com.teaonlinestore.service.ProductManagerInterface;
-import com.teaonlinestore.service.TeaManager;
-import com.teaonlinestore.service.TeaManagerInterface;
 
 public class HeaderController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,18 +27,27 @@ public class HeaderController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		HttpSession session = request.getSession(false);
+		if(session == null) {
+			System.out.println("NULL");
+		} else {
+			System.out.println("EXIST");
+		}
 		CategoryManagerInterface categoryManager = new CategoryManager();
-		ProductManagerInterface productManager = new ProductManager();
 		List<Category> categories = categoryManager.getCategoryByVisible(true);
 		Map<Category, List<String>> categoryKinds = new HashMap<Category, List<String>>(5);
 		for(Category category:categories) {
-			categoryKinds.put(category, productManager.getProductKindsByCategory(category));
+			ProductManagerInterface productManager = ProductManagerFactory.createProductManager(category);
+			categoryKinds.put(category, productManager.getProductKinds());
 		}
 		request.setAttribute("categoryKinds", categoryKinds);
-		String path = (String) request.getAttribute("path");
+		String categoryIdStr = request.getParameter("category_id");
+		Long categoryId = null;
+		if(categoryIdStr != null) {
+			categoryId = Long.valueOf(request.getParameter("category_id"));
+		}
 		RequestDispatcher view;
-		if(!path.equals("")) {
+		if(categoryId != null) {
 			view = request.getRequestDispatcher("/FilterBarController");
 			view.forward(request, response);
 		} else {

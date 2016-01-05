@@ -41,7 +41,7 @@ public class CategoryManager implements CategoryManagerInterface {
 			categories = categoryDao.getAllCategory();
 			HibernateUtil.commitTransaction();
 		} catch(Exception ex) {
-			LOG.error("Get all Category transaction field", ex);
+			LOG.error("Get all Category transaction failed", ex);
 		}
 		return categories;
 	}
@@ -53,7 +53,7 @@ public class CategoryManager implements CategoryManagerInterface {
 			categories = categoryDao.getCategoryByVisible(visible);
 			HibernateUtil.commitTransaction();
 		} catch(Exception ex) {
-			LOG.error("Get all Category transaction field", ex);
+			LOG.error("Get all Category transaction failed", ex);
 		}
 		return categories;
 	}
@@ -62,10 +62,10 @@ public class CategoryManager implements CategoryManagerInterface {
 		Category category = null;
 		try {
 			HibernateUtil.beginTransaction();
-			category = categoryDao.findByID(id);
+			category = categoryDao.findByID(Category.class, id);
 			HibernateUtil.commitTransaction();
 		} catch(Exception ex) {
-			LOG.error("Get Category by id transaction field", ex);
+			LOG.error("Get Category by id transaction failed", ex);
 		}
 		return category;
 	}

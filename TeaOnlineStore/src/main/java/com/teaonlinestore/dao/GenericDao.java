@@ -10,6 +10,6 @@ public interface GenericDao<T, ID extends Serializable> {
 
 	public void delete(T entity);
 
-	public T findByID(Long id);
+	public T findByID(Class type, Long id);
 	
 }

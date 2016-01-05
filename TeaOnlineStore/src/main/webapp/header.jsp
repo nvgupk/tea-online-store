@@ -13,16 +13,16 @@
 		</form>
 	</div>
 	<div id="mid_header">
-		<c:if test="${sessionScope.user eq null}">
+		<c:if test="${sessionScope.currentSessionUser eq null}">
 			<div>
 				Ласкаво просимо (<a href="login.jsp">Увійти</a>)
 			</div>
 			<div>
-				<a href="registration.html">Зареєструватися</a>
+				<a href="registration.html">Реєстрація</a>
 			</div>
 		</c:if>
-		<c:if test="${sessionScope.user ne null}">
-			<div>Ласкаво просимо, ${sessionScope.user}</div>
+		<c:if test="${sessionScope.currentSessionUser ne null}">
+			<div>Ласкаво просимо, <span id="currentUser">${sessionScope.currentSessionUser.firstName}</span></div>
 			<div>
 				<a href="personal.jsp">Ваш кабінет</a>
 			</div>

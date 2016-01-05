@@ -1,5 +1,5 @@
 package com.teaonlinestore.service;
 
-public interface CoffeManagerInterface {
+public interface CoffeManagerInterface extends ProductManagerInterface{
 
 }

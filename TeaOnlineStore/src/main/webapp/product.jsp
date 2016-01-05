@@ -11,7 +11,8 @@
 <link href="css/content.css" type="text/css" rel="stylesheet">
 <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
 <script src="js/dropdawn_filter_list.js" type="text/javascript"></script>
-<script src="js/content_change.js" type="text/javascript"></script>
+<script src="js/product.js" type="text/javascript"></script>
+
 <title>Ввесь чай</title>
 </head>
 <body>
