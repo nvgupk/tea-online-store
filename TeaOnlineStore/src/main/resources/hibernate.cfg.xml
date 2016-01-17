@@ -12,7 +12,7 @@
 		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
 		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/TeaOnlineStore</property>
 		<property name="hibernate.connection.username">postgres</property>
-		<property name="hibernate.connection.password">380347543770kuzy</property>
+		<property name="hibernate.connection.password">380347543770</property>
 		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<property name="hibernate.current_session_context_class">thread</property>
 

@@ -4,6 +4,8 @@ $(document).ready(function() {
 
 function clearAndSubmit(name, value) {
 	$(".filter_checkbox").attr('checked', false);
+	$('input[name=minPrice]').val($('input[name=lowestPrice]').val());
+	$('input[name=maxPrice]').val($('input[name=highestPrice]').val());
 	submitForm(name, value);
 };
 
@@ -15,6 +17,8 @@ jQuery.fn.addHidden = function(name, value) {
 };
 
 function submitForm(name, value) {
+	$('form[name=filter_form]').addHidden('curMinPrice', $('input[name=minPrice]').val());
+	$('form[name=filter_form]').addHidden('curMaxPrice', $('input[name=maxPrice]').val());
 	$('form[name=filter_form]').addHidden(name, value).submit();
 };
 

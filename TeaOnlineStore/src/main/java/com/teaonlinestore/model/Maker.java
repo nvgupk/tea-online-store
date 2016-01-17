@@ -23,12 +23,6 @@ public class Maker {
 	
 	@Column(name = "name", nullable = false)
 	private String name;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "maker")
-	private List<Tea> teas = new ArrayList<Tea>();
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "maker")
-	private List<Coffe> coffes = new ArrayList<Coffe>();
 
 	public Maker() {
 	}
@@ -36,13 +30,6 @@ public class Maker {
 	public Maker(Long makerId, String name) {
 		this.makerId = makerId;
 		this.name = name;
-	}
-
-	public Maker(Long makerId, String name, List<Tea> teas, List<Coffe> coffes) {
-		this.makerId = makerId;
-		this.name = name;
-		this.teas = teas;
-		this.coffes = coffes;
 	}
 
 	public Long getMakerId() {
@@ -59,22 +46,6 @@ public class Maker {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public List<Tea> getTeas() {
-		return this.teas;
-	}
-
-	public void setTeas(List<Tea> teas) {
-		this.teas = teas;
-	}
-
-	public List<Coffe> getCoffes() {
-		return this.coffes;
-	}
-
-	public void setCoffes(List<Coffe> coffes) {
-		this.coffes = coffes;
 	}
 	
 	@Override

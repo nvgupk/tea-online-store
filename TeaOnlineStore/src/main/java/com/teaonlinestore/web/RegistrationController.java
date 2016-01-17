@@ -20,13 +20,13 @@ import com.teaonlinestore.service.CustomerManagerInterface;
 /**
  * Servlet implementation class Registration
  */
-public class Registration extends HttpServlet {
+public class RegistrationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Registration() {
+    public RegistrationController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,7 +42,6 @@ public class Registration extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8"); 
 		String email = request.getParameter("email");
 		CustomerManagerInterface customerManager = new CustomerManager();
 		Customer customer = customerManager.getCustomerByEmail(email);

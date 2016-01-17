@@ -10,21 +10,21 @@
 	</appender>
 
 	<appender name="dbErrorLog" class="org.apache.log4j.FileAppender">
-		<param name="file" value="/TeaOnlineStore/logs/dbError.log" />
+		<param name="file" value="/home/andrew/Programs/workspace/logs/dbError.log" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%p %c: %m%n" />
 		</layout>
 	</appender>
 	
 	<appender name="infoLog" class="org.apache.log4j.FileAppender">
-		<param name="file" value="/TeaOnlineStore/logs/info.log" />
+		<param name="file" value="/home/andrew/Programs/workspace/logs/info.log" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%p %c: %m%n" />
 		</layout>
 	</appender>
 	
 	<appender name="fileErrLog" class="org.apache.log4j.FileAppender">
-		<param name="file" value="/TeaOnlineStore/logs/file_error.log" />
+		<param name="file" value="/home/andrew/Programs/workspace/logs/file_error.log" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%p %c: %m%n" />
 		</layout>

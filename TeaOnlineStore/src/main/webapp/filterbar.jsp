@@ -5,6 +5,24 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <div id="filterbar">
+	<form action="product.jsp" method="GET" name="filter_price">
+		<input type="hidden" name="lowestPrice" value="${requestScope.productLowestPrice}">
+		<input type="hidden" name="highestPrice" value="${requestScope.productHighestPrice}">
+		<div class="attribute">
+				<div class="arrow-down"></div>
+				Ціна
+		</div>
+		<div class="attribute_value_list">
+			<div id = "priceBlock">
+         		Від:<input type="text" name="minPrice" value="${requestScope.curProductMinPrice}">
+         		До:<input type="text" name="maxPrice" value="${requestScope.curProductMaxPrice}">
+        	</div>
+			<div id="slider-price"></div>
+			<div class="button">
+				<input type="button" name="submitPriceRange" value="Показати" onclick="submitForm('category_id','${requestScope.category.categoryId}')">
+			</div>
+		</div>
+	</form>
 	<form action="product.jsp" method="GET" name="filter_form">
 		<c:forEach var="entryAttr" items="${requestScope.attributes}">
 			<div class="attribute">
@@ -33,7 +51,6 @@
 			</div>
 		</c:forEach>
 		<div class="button">
-			<input type="submit" name="showWithFilter" value="Показати">
 			<input type="button" name="resetFilter" value="Скинути" onclick="clearAndSubmit('category_id','${requestScope.category.categoryId}')">
 		</div>
 	</form>

@@ -12,6 +12,9 @@ import com.teaonlinestore.dao.CoffeDao;
 import com.teaonlinestore.dao.DaoFactory;
 import com.teaonlinestore.dao.HibernateDaoFactory;
 import com.teaonlinestore.dao.TeaDao;
+import com.teaonlinestore.model.Coffe;
+import com.teaonlinestore.model.Product;
+import com.teaonlinestore.model.Tea;
 import com.teaonlinestore.utils.FileUtil;
 import com.teaonlinestore.utils.HibernateUtil;
 
@@ -29,6 +32,49 @@ public class CoffeManager implements CoffeManagerInterface {
 		coffeDao = daoFactory.createCoffeDao();
 	}
 	
+	public List<Coffe> getProductsByAttributes(Map<String, List<String>> attributeValues, Double minPrice, Double maxPrice) {
+		List<Coffe> products = new ArrayList<Coffe>();
+		try {
+			HibernateUtil.beginTransaction();
+			products = coffeDao.getEntitysByAttributes(attributeValues, minPrice, maxPrice, Coffe.class);
+			HibernateUtil.commitTransaction();
+		} catch (Exception ex){
+			LOG.error("Get Сoffe by several attributes transaction failed", ex);
+		}
+		return products;
+	}
+	
+	@Override
+	public List<? extends Product> getProductsByAttributes(Map<String, List<String>> attributeValues) {
+		return getProductsByAttributes(attributeValues, null, null);
+	}
+	
+	@Override
+	public Double getProductMaxPrice() {
+		Double maxPrice = null;
+		try {
+			HibernateUtil.beginTransaction();
+			maxPrice = coffeDao.getCoffeMaxPrice();
+			HibernateUtil.commitTransaction();
+		} catch (Exception ex) {
+			LOG.error("Get Coffe's max price transaction failed", ex);
+		}
+		return maxPrice;
+	}
+	
+	@Override
+	public Double getProductMinPrice() {
+		Double minPrice = null;
+		try {
+			HibernateUtil.beginTransaction();
+			minPrice = coffeDao.getCoffeMinPrice();
+			HibernateUtil.commitTransaction();
+		} catch (Exception ex) {
+			LOG.error("Get Coffe's min price transaction failed", ex);
+		}
+		return minPrice;
+	}
+	
 	public Map<String, String> getAttributeNamesUA() {
 		List<String> attributes = coffeDao.getAttributeNames();
 		Map<String, String> attributesUA = new HashMap<String, String>();
@@ -43,8 +89,8 @@ public class CoffeManager implements CoffeManagerInterface {
 	}
 	
 	@Override
-	public Map<String, List<?>> getAttributeValues(Set<String> attributes) {
-		Map<String, List<?>> attributeValues = new HashMap<String, List<?>>();
+	public Map<String, List<String>> getAttributeValues(Set<String> attributes) {
+		Map<String, List<String>> attributeValues = new HashMap<String, List<String>>();
 		try {
 			HibernateUtil.beginTransaction();
 			attributeValues = coffeDao.getAttributeValues(attributes);

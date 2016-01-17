@@ -11,6 +11,7 @@ import com.teaonlinestore.dao.DaoFactory;
 import com.teaonlinestore.dao.HibernateDaoFactory;
 import com.teaonlinestore.dao.ProductDao;
 import com.teaonlinestore.model.Category;
+import com.teaonlinestore.model.Product;
 import com.teaonlinestore.utils.HibernateUtil;
 
 public class ProductManager implements ProductManagerInterface {
@@ -19,10 +20,38 @@ public class ProductManager implements ProductManagerInterface {
 	private ProductDao productDao;
 	
 	@Override
-	public Map<String, List<?>> getAttributeValues(Set<String> attributes) {
+	public List<? extends Product> getProductsByAttributes(
+			Map<String, List<String>> attributeValues, Double minPrice,
+			Double maxPrice) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public List<? extends Product> getProductsByAttributes(
+			Map<String, List<String>> attributeValues) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public Double getProductMaxPrice() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public Double getProductMinPrice() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public Map<String, List<String>> getAttributeValues(Set<String> attributes) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	@Override
 	public Map<String, String> getAttributeNamesUA() {
 		// TODO Auto-generated method stub

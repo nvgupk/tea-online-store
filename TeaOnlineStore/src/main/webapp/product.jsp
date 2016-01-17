@@ -9,8 +9,10 @@
 <link href="css/header.css" type="text/css" rel="stylesheet">
 <link href="css/wrapper.css" type="text/css" rel="stylesheet">
 <link href="css/content.css" type="text/css" rel="stylesheet">
+<link href="css/jquery-ui.css" type="text/css" rel="stylesheet">
 <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
-<script src="js/dropdawn_filter_list.js" type="text/javascript"></script>
+<script src="js/jquery-ui.js" type="text/javascript"></script>
+<script src="js/filterbar.js" type="text/javascript"></script>
 <script src="js/product.js" type="text/javascript"></script>
 
 <title>Ввесь чай</title>

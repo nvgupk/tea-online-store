@@ -18,11 +18,11 @@
 				Ласкаво просимо (<a href="login.jsp">Увійти</a>)
 			</div>
 			<div>
-				<a href="registration.html">Реєстрація</a>
+				<a href="registration.jsp">Реєстрація</a>
 			</div>
 		</c:if>
 		<c:if test="${sessionScope.currentSessionUser ne null}">
-			<div>Ласкаво просимо, <span id="currentUser">${sessionScope.currentSessionUser.firstName}</span></div>
+			<div>Ласкаво просимо, <span id="currentUser">${sessionScope.currentSessionUser.firstName}</span> (<a href="logout">Вийти</a>)</div>
 			<div>
 				<a href="personal.jsp">Ваш кабінет</a>
 			</div>

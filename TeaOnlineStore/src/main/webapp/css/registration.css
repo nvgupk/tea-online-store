@@ -1,8 +1,8 @@
-#wrapper {
+#registration, #login {
 	font: 16px Verdana;
 	color:#68635c;
 	width:1100px;
-	margin:0 auto 0 auto;
+	margin:0 auto 50px auto;
 	background-color:#FFFFFF;
 }
 
@@ -11,11 +11,22 @@
 	color:#CA1F1C;
 }
 
-form {
+#error {
+	font: 14px Verdana;
+	color:#CA1F1C;
+	text-align:center;
+}
+
+form[name="registration"] {
 	padding:0;
 	margin:35px auto 0 auto;
 	width:510px;
-	
+}
+
+form[name="login"] {
+	padding:0;
+	margin:35px auto 0 auto;
+	width:220px;
 }
 
 #l {
@@ -84,7 +95,12 @@ h2 {
 	width:129px;
 }
 
-#confReg input {
+#confLog {
+	margin:0 auto 0 auto;
+	width:55px;
+}
+
+.conf {
 	height:25px;
 	margin:0;
 	padding:0;
@@ -95,12 +111,12 @@ h2 {
 	border-radius:3px;
 }
 
-#confReg input:hover {
+.conf:hover {
 	color:#ffffff;
 	background-color:#8BA04F;
 	cursor:pointer;
 }
 
-#confReg input:active {
+.conf:active {
 	border:2px solid #819449;
 }

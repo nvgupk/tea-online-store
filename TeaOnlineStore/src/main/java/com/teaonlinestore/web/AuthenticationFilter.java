@@ -28,7 +28,6 @@ public class AuthenticationFilter implements Filter {
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		httpRequest.setCharacterEncoding("UTF-8");
 		HttpSession session = httpRequest.getSession();
 		Customer currentSessionUser = (Customer) session.getAttribute("currentSessionUser");

@@ -38,6 +38,12 @@ public class Product implements java.io.Serializable {
 	@Column(name = "price", nullable = false)
 	private double price;
 	
+	@Column(name = "maker", nullable = false)
+	private String maker;
+	
+	@Column(name = "img_path")
+	private String image;
+
 	@Column(name = "kind", nullable = false)
 	private String kind;
 	
@@ -50,7 +56,7 @@ public class Product implements java.io.Serializable {
 	public Product() {
 	}
 
-	public Product(Long productId, Category category, String name, int quentity, double price, String kind, String descriprion) {
+	public Product(Long productId, Category category, String name, int quentity, double price, String kind, String descriprion, String maker, String image) {
 		this.productId = productId;
 		this.category = category;
 		this.name = name;
@@ -58,8 +64,11 @@ public class Product implements java.io.Serializable {
 		this.price = price;
 		this.description = descriprion;
 		this.kind = kind;
+		this.image = image;
+		this.maker = maker;
 	}
-
+	
+	
 	public Long getProductId() {
 		return this.productId;
 	}
@@ -75,6 +84,14 @@ public class Product implements java.io.Serializable {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+	
+	public String getMaker() {
+		return maker;
+	}
+
+	public void setMaker(String maker) {
+		this.maker = maker;
+	}
 
 	public String getName() {
 		return this.name;
@@ -83,7 +100,15 @@ public class Product implements java.io.Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public String getImage() {
+		return image;
+	}
 
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
 	public int getQuentity() {
 		return this.quentity;
 	}

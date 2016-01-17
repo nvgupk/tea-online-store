@@ -7,8 +7,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Conjunction;
+import org.hibernate.criterion.Disjunction;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.persister.entity.AbstractEntityPersister;
 
 import com.teaonlinestore.model.Coffe;
@@ -32,8 +37,8 @@ public class CoffeDaoHibernate extends GenericDaoHibernate<Coffe, Long> implemen
 	}
 	
 	@Override
-	public Map<String, List<?>> getAttributeValues(Set<String> attributes) {
-		Map<String, List<?>> attributeValues = new HashMap<String, List<?>>();
+	public Map<String, List<String>> getAttributeValues(Set<String> attributes) {
+		Map<String, List<String>> attributeValues = new HashMap<String, List<String>>();
 		Session session = HibernateUtil.getSession();
 		for(String attribute : attributes) {
 			Query query = session.createQuery("select distinct " + attribute + " from Coffe");
@@ -41,4 +46,21 @@ public class CoffeDaoHibernate extends GenericDaoHibernate<Coffe, Long> implemen
 		}
 		return attributeValues;
 	}
+	
+	@Override
+	public Double getCoffeMaxPrice() {
+		Session session = HibernateUtil.getSession();
+		Criteria cr = session.createCriteria(Coffe.class);
+		cr.setProjection(Projections.max("price"));
+		return (Double) cr.list().get(0);
+	}
+	
+	@Override
+	public Double getCoffeMinPrice() {
+		Session session = HibernateUtil.getSession();
+		Criteria cr = session.createCriteria(Coffe.class);
+		cr.setProjection(Projections.min("price"));
+		return (Double) cr.list().get(0);
+	}
+	
 }
