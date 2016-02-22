@@ -3,7 +3,7 @@
   <filter>
     <display-name>AuthenticationFilter</display-name>
     <filter-name>AuthenticationFilter</filter-name>
-    <filter-class>com.teaonlinestore.web.AuthenticationFilter</filter-class>
+    <filter-class>com.teaonlinestore.web.filter.AuthenticationFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>AuthenticationFilter</filter-name>
@@ -12,7 +12,7 @@
   <filter>
     <display-name>LogRegFilter</display-name>
     <filter-name>LogRegFilter</filter-name>
-    <filter-class>com.teaonlinestore.web.LogRegFilter</filter-class>
+    <filter-class>com.teaonlinestore.web.filter.LogRegFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>LogRegFilter</filter-name>
@@ -24,7 +24,7 @@
   <filter>
     <display-name>HeaderFilter</display-name>
     <filter-name>HeaderFilter</filter-name>
-    <filter-class>com.teaonlinestore.web.HeaderFilter</filter-class>
+    <filter-class>com.teaonlinestore.web.filter.HeaderFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>HeaderFilter</filter-name>
@@ -33,20 +33,52 @@
     <dispatcher>FORWARD</dispatcher>
   </filter-mapping>
   <filter>
-    <display-name>PageRedirectFilter</display-name>
-    <filter-name>PageRedirectFilter</filter-name>
-    <filter-class>com.teaonlinestore.web.PageRedirectFilter</filter-class>
+    <display-name>OrderFilter</display-name>
+    <filter-name>OrderFilter</filter-name>
+    <filter-class>com.teaonlinestore.web.filter.OrderFilter</filter-class>
   </filter>
   <filter-mapping>
-    <filter-name>PageRedirectFilter</filter-name>
-    <url-pattern>/product.jsp</url-pattern>
-    <url-pattern>/welcome.jsp</url-pattern>
-    <url-pattern>/WelcomeController</url-pattern>
-    <url-pattern>/ProductController</url-pattern>
+    <filter-name>OrderFilter</filter-name>
+    <url-pattern>/Order</url-pattern>
+    <url-pattern>/order.jsp</url-pattern>
   </filter-mapping>
-  <listener>
-    <listener-class>com.teaonlinestore.web.AppInitializationListener</listener-class>
-  </listener>
+  <filter>
+    <display-name>ProductInfoFilter</display-name>
+    <filter-name>ProductInfoFilter</filter-name>
+    <filter-class>com.teaonlinestore.web.filter.ProductInfoFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ProductInfoFilter</filter-name>
+    <url-pattern>/productinfo.jsp</url-pattern>
+  </filter-mapping>
+  <filter>
+    <display-name>PersonalFilter</display-name>
+    <filter-name>PersonalFilter</filter-name>
+    <filter-class>com.teaonlinestore.web.filter.PersonalFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>PersonalFilter</filter-name>
+    <url-pattern>/Personal</url-pattern>
+    <url-pattern>/personal.jsp</url-pattern>
+  </filter-mapping>
+  <filter>
+    <display-name>ProductFilter</display-name>
+    <filter-name>ProductFilter</filter-name>
+    <filter-class>com.teaonlinestore.web.filter.ProductFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ProductFilter</filter-name>
+    <url-pattern>/product.jsp</url-pattern>
+  </filter-mapping>
+  <filter>
+    <display-name>WelcomeFilter</display-name>
+    <filter-name>WelcomeFilter</filter-name>
+    <filter-class>com.teaonlinestore.web.filter.WelcomeFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>WelcomeFilter</filter-name>
+    <url-pattern>/welcome.jsp</url-pattern>
+  </filter-mapping>
   <servlet>
     <display-name>WelcomeController</display-name>
     <servlet-name>WelcomeController</servlet-name>
@@ -77,10 +109,6 @@
     <servlet-name>RegistrationController</servlet-name>
     <url-pattern>/Registration</url-pattern>
   </servlet-mapping>
-  <context-param>
-    <param-name>sessionCookieName</param-name>
-    <param-value>tea_pleasure_user_id</param-value>
-  </context-param>
   <servlet>
     <description></description>
     <display-name>LoginController</display-name>
@@ -91,5 +119,77 @@
     <servlet-name>LoginController</servlet-name>
     <url-pattern>/Login</url-pattern>
     <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CartController</display-name>
+    <servlet-name>CartController</servlet-name>
+    <servlet-class>com.teaonlinestore.web.CartController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CartController</servlet-name>
+    <url-pattern>/Cart</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>OrderController</display-name>
+    <servlet-name>OrderController</servlet-name>
+    <servlet-class>com.teaonlinestore.web.OrderController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderController</servlet-name>
+    <url-pattern>/Order</url-pattern>
+  </servlet-mapping>
+  <context-param>
+    <param-name>sessionCookieName</param-name>
+    <param-value>tea_pleasure_user_id</param-value>
+  </context-param>
+  <context-param>
+    <param-name>imagePath</param-name>
+    <param-value>/home/andrew/From Windows/TeaOnlineStore/Images/</param-value>
+  </context-param>
+  <context-param>
+    <param-name>numberOfProductsOnPage</param-name>
+    <param-value>15</param-value>
+  </context-param>
+  <servlet>
+    <description></description>
+    <display-name>ProductInfoController</display-name>
+    <servlet-name>ProductInfoController</servlet-name>
+    <servlet-class>com.teaonlinestore.web.ProductInfoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductInfoController</servlet-name>
+    <url-pattern>/ProductInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PersonalController</display-name>
+    <servlet-name>PersonalController</servlet-name>
+    <servlet-class>com.teaonlinestore.web.PersonalController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PersonalController</servlet-name>
+    <url-pattern>/Personal</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ImageLoader</display-name>
+    <servlet-name>ImageLoader</servlet-name>
+    <servlet-class>com.teaonlinestore.web.component.ImageLoader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImageLoader</servlet-name>
+    <url-pattern>/ImageLoader</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchController</display-name>
+    <servlet-name>SearchController</servlet-name>
+    <servlet-class>com.teaonlinestore.web.SearchController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchController</servlet-name>
+    <url-pattern>/Search</url-pattern>
   </servlet-mapping>
 </web-app>

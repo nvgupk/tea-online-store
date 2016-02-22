@@ -25,7 +25,7 @@
 		<mapping class="com.teaonlinestore.model.Category" />
 		<mapping class="com.teaonlinestore.model.Customer" />
 		<mapping class="com.teaonlinestore.model.Delivery" />
-		<mapping class="com.teaonlinestore.model.Peyment" />
+		<mapping class="com.teaonlinestore.model.Payment" />
 		<mapping class="com.teaonlinestore.model.Product" />
 		<mapping class="com.teaonlinestore.model.Tea" />
 		<mapping class="com.teaonlinestore.model.Coffe" />
@@ -33,6 +33,7 @@
 		<mapping class="com.teaonlinestore.model.PurchaseProduct" />
 		<mapping class="com.teaonlinestore.model.Status" />
 		<mapping class="com.teaonlinestore.model.Maker" />
+		<mapping class="com.teaonlinestore.model.Attribute" />
 
 	</session-factory>
 

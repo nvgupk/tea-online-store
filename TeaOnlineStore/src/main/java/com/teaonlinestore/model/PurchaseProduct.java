@@ -1,43 +1,31 @@
 package com.teaonlinestore.model;
 
 
+import javax.persistence.AssociationOverride;
+import javax.persistence.AssociationOverrides;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "purchaseproduct", schema = "public")
+@AssociationOverrides({
+	@AssociationOverride(name = "id.purchase", 
+		joinColumns = @JoinColumn(name = "purchase_id")),
+	@AssociationOverride(name = "id.product", 
+		joinColumns = @JoinColumn(name = "product_id")) })
 public class PurchaseProduct implements java.io.Serializable {
-	@EmbeddedId
-	private PurchaseProductId id;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
-	private Product product;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "purchase_id", nullable = false, insertable = false, updatable = false)
-	private Purchase purchase;
-	@Column(name = "price", nullable = false)
-	private double price;
-	@Column(name = "quantity", nullable = false)
-	private Long quantity;
-
+	private PurchaseProductId id = new PurchaseProductId();
+	private Double price;
+	private Integer quantity;
+	
 	public PurchaseProduct() {
 	}
 
-	public PurchaseProduct(PurchaseProductId id, Product product,
-			Purchase purchase, double price, Long quantity) {
-		this.id = id;
-		this.product = product;
-		this.purchase = purchase;
-		this.price = price;
-		this.quantity = quantity;
-	}
-
-	
+	@EmbeddedId
 	public PurchaseProductId getId() {
 		return this.id;
 	}
@@ -46,37 +34,39 @@ public class PurchaseProduct implements java.io.Serializable {
 		this.id = id;
 	}
 
-	
+	@Transient
 	public Product getProduct() {
-		return this.product;
+		return id.getProduct();
 	}
 
 	public void setProduct(Product product) {
-		this.product = product;
+		id.setProduct(product);
 	}
-
+	
+	@Transient
 	public Purchase getPurchase() {
-		return this.purchase;
+		return id.getPurchase();
 	}
 
 	public void setPurchase(Purchase purchase) {
-		this.purchase = purchase;
+		id.setPurchase(purchase);
 	}
-
-	public double getPrice() {
+	
+	@Column(name = "price", nullable = false)
+	public Double getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
-
-	public Long getQuantity() {
+	
+	@Column(name = "quantity", nullable = false)
+	public Integer getQuantity() {
 		return this.quantity;
 	}
 
-	public void setQuantity(Long quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-
 }

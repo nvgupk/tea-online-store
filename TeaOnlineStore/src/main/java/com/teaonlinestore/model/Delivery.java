@@ -1,6 +1,5 @@
 package com.teaonlinestore.model;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,44 +15,20 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "delivery", schema = "public")
 public class Delivery implements java.io.Serializable {
-	@Id
-	@Column(name = "delivery_id", nullable = false)
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long deliveryId;
-	@Column(name = "name", nullable = false)
 	private String name;
-	@Column(name = "description")
 	private String description;
-	@Column(name = "price")
-	private double price;
-	@Column(name = "tariff")
+	private Double price;
 	private String tariff;
-	@Column(name = "visible", nullable = false)
-	private boolean visible;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "delivery")
+	private Boolean visible;
 	private List<Purchase> purchases = new ArrayList<Purchase>();
 
 	public Delivery() {
 	}
-
-	public Delivery(Long deliveryId, String name, boolean visible) {
-		this.deliveryId = deliveryId;
-		this.name = name;
-		this.visible = visible;
-	}
-
-	public Delivery(Long deliveryId, String name, String description,
-			double price, String tariff, boolean visible,
-			List<Purchase> purchases) {
-		this.deliveryId = deliveryId;
-		this.name = name;
-		this.description = description;
-		this.price = price;
-		this.tariff = tariff;
-		this.visible = visible;
-		this.purchases = purchases;
-	}
-
+	
+	@Id
+	@Column(name = "delivery_id", nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getDeliveryId() {
 		return this.deliveryId;
 	}
@@ -61,7 +36,8 @@ public class Delivery implements java.io.Serializable {
 	public void setDeliveryId(Long deliveryId) {
 		this.deliveryId = deliveryId;
 	}
-
+	
+	@Column(name = "name", nullable = false)
 	public String getName() {
 		return this.name;
 	}
@@ -69,7 +45,8 @@ public class Delivery implements java.io.Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+	@Column(name = "description")
 	public String getDescription() {
 		return this.description;
 	}
@@ -77,15 +54,17 @@ public class Delivery implements java.io.Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	public double getPrice() {
+	
+	@Column(name = "price")
+	public Double getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
-
+	
+	@Column(name = "tariff")
 	public String getTariff() {
 		return this.tariff;
 	}
@@ -93,15 +72,17 @@ public class Delivery implements java.io.Serializable {
 	public void setTariff(String tariff) {
 		this.tariff = tariff;
 	}
-
-	public boolean isVisible() {
+	
+	@Column(name = "visible", nullable = false)
+	public Boolean getVisible() {
 		return this.visible;
 	}
 
-	public void setVisible(boolean visible) {
+	public void setVisible(Boolean visible) {
 		this.visible = visible;
 	}
-
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "delivery")
 	public List<Purchase> getPurhases() {
 		return this.purchases;
 	}
@@ -109,6 +90,5 @@ public class Delivery implements java.io.Serializable {
 	public void setPurhases(List<Purchase> purchases) {
 		this.purchases = purchases;
 	}
-
 }
 

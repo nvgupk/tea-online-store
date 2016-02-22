@@ -9,17 +9,12 @@ import javax.persistence.Table;
 @Table(name = "tea", schema = "public")
 @PrimaryKeyJoinColumn(name="product_id")
 public class Tea extends Product {
-	
-	@Column(name = "leaf_shape", nullable = false)
 	private String leafShape;
 
 	public Tea() {
 	}
-
-	public Tea(String leafShape) {
-		this.leafShape = leafShape;
-	}
-
+	
+	@Column(name = "leaf_shape", nullable = false)
 	public String getLeafShape() {
 		return this.leafShape;
 	}

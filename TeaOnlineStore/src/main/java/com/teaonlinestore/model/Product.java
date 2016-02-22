@@ -20,55 +20,23 @@ import javax.persistence.Table;
 @Table(name = "product", schema = "public")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Product implements java.io.Serializable {
-	@Id
-	@Column(name = "product_id", nullable = false)
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long productId;
-	
-	@ManyToOne
-	@JoinColumn(name = "category_id", nullable = false)
 	private Category category;
-	
-	@Column(name = "name", nullable = false)
 	private String name;
-	
-	@Column(name = "quentity", nullable = false)
-	private int quentity;
-	
-	@Column(name = "price", nullable = false)
-	private double price;
-	
-	@Column(name = "maker", nullable = false)
+	private Integer quentity;
+	private Double price;
 	private String maker;
-	
-	@Column(name = "img_path")
 	private String image;
-
-	@Column(name = "kind", nullable = false)
 	private String kind;
-	
-	@Column(name = "description")
 	private String description;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
 	private List<PurchaseProduct> purhaseProducts = new ArrayList<PurchaseProduct>();
 
 	public Product() {
 	}
-
-	public Product(Long productId, Category category, String name, int quentity, double price, String kind, String descriprion, String maker, String image) {
-		this.productId = productId;
-		this.category = category;
-		this.name = name;
-		this.quentity = quentity;
-		this.price = price;
-		this.description = descriprion;
-		this.kind = kind;
-		this.image = image;
-		this.maker = maker;
-	}
 	
-	
+	@Id
+	@Column(name = "product_id", nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getProductId() {
 		return this.productId;
 	}
@@ -76,7 +44,9 @@ public class Product implements java.io.Serializable {
 	public void setProductId(Long productId) {
 		this.productId = productId;
 	}
-
+	
+	@ManyToOne
+	@JoinColumn(name = "category_id", nullable = false)
 	public Category getCategory() {
 		return this.category;
 	}
@@ -85,6 +55,7 @@ public class Product implements java.io.Serializable {
 		this.category = category;
 	}
 	
+	@Column(name = "maker", nullable = false)
 	public String getMaker() {
 		return maker;
 	}
@@ -92,7 +63,8 @@ public class Product implements java.io.Serializable {
 	public void setMaker(String maker) {
 		this.maker = maker;
 	}
-
+	
+	@Column(name = "name", nullable = false)
 	public String getName() {
 		return this.name;
 	}
@@ -101,6 +73,7 @@ public class Product implements java.io.Serializable {
 		this.name = name;
 	}
 	
+	@Column(name = "img_path")
 	public String getImage() {
 		return image;
 	}
@@ -109,22 +82,25 @@ public class Product implements java.io.Serializable {
 		this.image = image;
 	}
 	
-	public int getQuentity() {
+	@Column(name = "quentity", nullable = false)
+	public Integer getQuentity() {
 		return this.quentity;
 	}
 
-	public void setQuentity(int quentity) {
+	public void setQuentity(Integer quentity) {
 		this.quentity = quentity;
 	}
 	
-	public double getPrice() {
+	@Column(name = "price", nullable = false)
+	public Double getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
-
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "id.product")
 	public List<PurchaseProduct> getPurhaseProducts() {
 		return this.purhaseProducts;
 	}
@@ -132,7 +108,8 @@ public class Product implements java.io.Serializable {
 	public void setPurhaseProducts(List<PurchaseProduct> purhaseProducts) {
 		this.purhaseProducts = purhaseProducts;
 	}
-
+	
+	@Column(name = "description")
 	public String getDescription() {
 		return description;
 	}
@@ -141,6 +118,7 @@ public class Product implements java.io.Serializable {
 		this.description = description;
 	}
 	
+	@Column(name = "kind", nullable = false)
 	public String getKind() {
 		return this.kind;
 	}
@@ -148,5 +126,30 @@ public class Product implements java.io.Serializable {
 	public void setKind(String kind) {
 		this.kind = kind;
 	}
-
+	
+	@Override
+	public boolean equals(Object other) {
+		if(other == null) {
+			return false;
+		}
+		if(this.getClass() != other.getClass()) {
+			return false;
+		}
+		if(this == other) {
+			return true;
+		}
+		Product castOther = (Product) other;
+		if(this.productId == castOther.productId) {
+			return true;
+		}
+		return false;	
+	}
+	
+	@Override
+	public int hashCode() {
+		Integer result = 17;
+		result = (int) (37 * result + this.productId);
+		return result;
+	}
+	
 }

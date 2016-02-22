@@ -14,8 +14,8 @@ public class HibernateDaoFactory implements DaoFactory {
 		return new DeliveryDaoHibernate();
 	}
 
-	public PeymentDao createPeymentDao() {
-		return new PeymentDaoHibernate();
+	public PaymentDao createPaymentDao() {
+		return new PaymentDaoHibernate();
 	}
 
 	public ProductDao createProductDao() {
@@ -40,5 +40,9 @@ public class HibernateDaoFactory implements DaoFactory {
 	
 	public TeaDao createTeaDao() {
 		return new TeaDaoHibernate();
+	}
+
+	public AttributeDao createAttributeDao() {
+		return new AttributeDaoHibernate();
 	}
 }

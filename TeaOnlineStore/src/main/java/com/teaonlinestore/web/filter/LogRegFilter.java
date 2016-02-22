@@ -1,4 +1,4 @@
-package com.teaonlinestore.web;
+package com.teaonlinestore.web.filter;
 
 import java.io.IOException;
 
@@ -15,13 +15,11 @@ import javax.servlet.http.HttpSession;
 
 import com.teaonlinestore.model.Customer;
 
-/**
- * Servlet Filter implementation class LogRegFilter
- */
+
 public class LogRegFilter implements Filter {
 
 	public void destroy() {
-		// TODO Auto-generated method stub
+		
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -53,7 +51,7 @@ public class LogRegFilter implements Filter {
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
+		
 	}
 
 }

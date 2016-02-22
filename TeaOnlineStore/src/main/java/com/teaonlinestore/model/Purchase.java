@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,128 +15,125 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "purchase", schema = "public")
 public class Purchase implements java.io.Serializable {
-	@Id
-	@Column(name = "purchase_id", unique = true, nullable = false)
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long purchaseId;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "customer_id", nullable = false)
 	private Customer customer;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "delivery_id", nullable = false)
 	private Delivery delivery;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "peyment_id", nullable = false)
-	private Peyment peyment;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "status_id", nullable = false)
+	private Payment payment;
 	private Status status;
-	
-	@Column(name = "purchase_date", nullable = false, length = 13)
 	private Date purchaseDate;
-	
-	@Column(name = "additional_info")
 	private String additionalInfo;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "purchase")
+	private Double totalPrice;
+	private Integer totalQuantity;
 	private List<PurchaseProduct> purchaseProducts = new ArrayList<PurchaseProduct>();
 
 	public Purchase() {
 	}
-
-	public Purchase(Long purchaseId, Customer customer, Delivery delivery,
-			Peyment peyment, Date purchaseDate) {
-		this.purchaseId = purchaseId;
-		this.customer = customer;
-		this.delivery = delivery;
-		this.peyment = peyment;
-		this.purchaseDate = purchaseDate;
-	}
-
-	public Purchase(Long purchaseId, Customer customer, Delivery delivery,
-			Peyment peyment, Date purchaseDate, String additionalInfo,
-			List<PurchaseProduct> purchaseproducts) {
-		this.purchaseId = purchaseId;
-		this.customer = customer;
-		this.delivery = delivery;
-		this.peyment = peyment;
-		this.purchaseDate = purchaseDate;
-		this.additionalInfo = additionalInfo;
-		this.purchaseProducts = purchaseproducts;
-	}
-
-	public Long getpurchaseId() {
+	
+	@Id
+	@Column(name = "purchase_id", unique = true, nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public Long getPurchaseId() {
 		return this.purchaseId;
 	}
 
-	public void setpurchaseId(Long purchaseId) {
+	public void setPurchaseId(Long purchaseId) {
 		this.purchaseId = purchaseId;
 	}
-
+	
+	@ManyToOne
+	@JoinColumn(name = "customer_id", nullable = false)
 	public Customer getCustomer() {
 		return this.customer;
 	}
 
-	public void setCustomer(Customer customer) {
+	public Purchase setCustomer(Customer customer) {
 		this.customer = customer;
+		return this;
 	}
-
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "delivery_id", nullable = false)
 	public Delivery getDelivery() {
 		return this.delivery;
 	}
 
-	public void setDelivery(Delivery delivery) {
+	public Purchase setDelivery(Delivery delivery) {
 		this.delivery = delivery;
+		return this;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "payment_id", nullable = false)
+	public Payment getPayment() {
+		return this.payment;
 	}
 
-	public Peyment getPeyment() {
-		return this.peyment;
+	public Purchase setPayment(Payment payment) {
+		this.payment = payment;
+		return this;
 	}
-
-	public void setPeyment(Peyment peyment) {
-		this.peyment = peyment;
-	}
-
+	
+	@Column(name = "purchase_date", nullable = false, length = 13)
 	public Date getPurchaseDate() {
 		return this.purchaseDate;
 	}
 
-	public void setPurchaseDate(Date purchaseDate) {
+	public Purchase setPurchaseDate(Date purchaseDate) {
 		this.purchaseDate = purchaseDate;
+		return this;
 	}
-
+	
+	@Column(name = "additional_info")
 	public String getAdditionalInfo() {
 		return this.additionalInfo;
 	}
 
-	public void setAdditionalInfo(String additionalInfo) {
+	public Purchase setAdditionalInfo(String additionalInfo) {
 		this.additionalInfo = additionalInfo;
+		return this;
 	}
-
-	public List<PurchaseProduct> getpurchaseproducts() {
+	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "id.purchase", cascade=CascadeType.ALL)
+	public List<PurchaseProduct> getPurchaseProducts() {
 		return this.purchaseProducts;
 	}
 
-	public void setpurchaseproducts(List<PurchaseProduct> purchaseProducts) {
+	public void setPurchaseProducts(List<PurchaseProduct> purchaseProducts) {
 		this.purchaseProducts = purchaseProducts;
 	}
 	
-	public Status getPurchaseStatus() {
+	@ManyToOne
+	@JoinColumn(name = "status_id")
+	public Status getStatus() {
 		return this.status;
 	}
 
-	public void setPurchaseStatus(Status status) {
+	public Purchase setStatus(Status status) {
 		this.status = status;
+		return this;
+	}
+	
+	@Transient
+	public Double getTotalPrice() {
+		totalPrice = .0;
+		for(int i = 0; i < purchaseProducts.size(); i++) {
+			totalPrice += purchaseProducts.get(i).getPrice()*purchaseProducts.get(i).getQuantity();
+		}
+		return totalPrice;
+	}
+	
+	@Transient
+	public Integer getTotalQuantity() {
+		totalQuantity = 0;
+		for(int i = 0; i < purchaseProducts.size(); i++) {
+			totalQuantity += purchaseProducts.get(i).getQuantity();
+		}
+		return totalQuantity;
 	}
 
 }

@@ -2,7 +2,6 @@ package com.teaonlinestore.service;
 
 import org.apache.log4j.Logger;
 
-import com.teaonlinestore.dao.CoffeDao;
 import com.teaonlinestore.dao.CustomerDao;
 import com.teaonlinestore.dao.DaoFactory;
 import com.teaonlinestore.dao.HibernateDaoFactory;
@@ -31,20 +30,36 @@ public class CustomerManager implements CustomerManagerInterface {
 			customer = customerDao.findByID(Customer.class, customerId);
 			HibernateUtil.commitTransaction();
 		} catch (Exception ex){
+			HibernateUtil.rollbackTransaction();
 			LOG.error("Get Customer by id transaction failed", ex);
 		}
 		return customer;
 	}
 	
 	@Override
-	public Customer getCustomerByEmail(String email) {
+	public Customer getRegisteredCustomerByEmail(String email) {
 		Customer customer = null;
 		try {
 			HibernateUtil.beginTransaction();
-			customer = customerDao.getCustomerByEmail(email);
+			customer = customerDao.getRegisteredCustomerByEmail(email);
 			HibernateUtil.commitTransaction();
 		} catch (Exception ex){
+			HibernateUtil.rollbackTransaction();
 			LOG.error("Get Customer by email transaction failed", ex);
+		}
+		return customer;
+	}
+	
+	@Override
+	public Customer getRegisteredCustomerByEmailAndPassword(String email, String password) {
+		Customer customer = null;
+		try {
+			HibernateUtil.beginTransaction();
+			customer = customerDao.getRegisteredCustomerByEmailAndPassword(email, password);
+			HibernateUtil.commitTransaction();
+		} catch (Exception ex){
+			HibernateUtil.rollbackTransaction();
+			LOG.error("Get Customer by email and password transaction failed", ex);
 		}
 		return customer;
 	}
@@ -56,6 +71,7 @@ public class CustomerManager implements CustomerManagerInterface {
 			customerDao.save(customer);
 			HibernateUtil.commitTransaction();
 		} catch (Exception ex){
+			HibernateUtil.rollbackTransaction();
 			LOG.error("Save Customer failed", ex);
 		}
 	}

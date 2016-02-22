@@ -41,19 +41,15 @@ public class LoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		Boolean isError = false;
+		Boolean isRegistered = true;
 		CustomerManagerInterface customerManager = new CustomerManager();
-		Customer customer = customerManager.getCustomerByEmail(email);
+		Customer customer = customerManager.getRegisteredCustomerByEmailAndPassword(email, password);
 		if(customer == null) {
-			isError = true;
-		} else {
-			if(!password.equals(customer.getPassword())) {
-				isError = true;
-			}
+			isRegistered = false;
 		}
 		RequestDispatcher view = null;
-		if(isError) {
-			request.setAttribute("isError", isError);
+		if(!isRegistered) {
+			request.setAttribute("isRegistered", isRegistered);
 			view = request.getRequestDispatcher("login.jsp");
 			view.forward(request, response);
 		} else {

@@ -1,18 +1,13 @@
 package com.teaonlinestore.dao;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Map;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
-import org.apache.log4j.Logger;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.Conjunction;
-import org.hibernate.criterion.Disjunction;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.persister.entity.AbstractEntityPersister;
 
-import com.teaonlinestore.model.Tea;
-import com.teaonlinestore.service.CategoryManager;
 import com.teaonlinestore.utils.HibernateUtil;
 
 public abstract class GenericDaoHibernate<T, ID extends Serializable> implements GenericDao<T, ID> {
@@ -21,7 +16,7 @@ public abstract class GenericDaoHibernate<T, ID extends Serializable> implements
 		session.delete(entity);
 	}
 	
-	public T findByID(Class type, Long id) {
+	public T findByID(Class type, ID id) {
 		Session session = HibernateUtil.getSession();
 		T entity = (T) session.get(type, id);
 		return entity;
@@ -37,21 +32,10 @@ public abstract class GenericDaoHibernate<T, ID extends Serializable> implements
 		session.update(entity);
 	}
 	
-	public List<T> getEntitysByAttributes(Map<String, List<String>> attributeValues, Double minPrice, Double maxPrice, Class type) {
-		Session session = HibernateUtil.getSession();
-		Criteria cr = session.createCriteria(type);
-		Conjunction and = Restrictions.conjunction();
-		for(String attr : attributeValues.keySet()) {
-			Disjunction or = Restrictions.disjunction();
-			for(String value : attributeValues.get(attr)) {
-				or.add(Restrictions.eq(attr, value));
-			}
-			and.add(or);
-		}
-		cr.add(and);
-		if(minPrice != null && maxPrice != null && minPrice <= maxPrice) {
-			cr.add(Restrictions.between("price", minPrice, maxPrice));
-		}
-		return cr.list();
+	public Set<String> getAttributeNames(Class type) {
+		AbstractEntityPersister aep = (AbstractEntityPersister) HibernateUtil.getSessionFactory().getClassMetadata(type);
+		String[] propertyNames = aep.getPropertyNames();
+		return new HashSet<String>(Arrays.asList(propertyNames));
 	}
+	
 }

@@ -35,27 +35,29 @@ public class CategoryManager implements CategoryManagerInterface {
 	}
 
 	public List<Category> getAllCategory() {
-		List<Category> categories = new ArrayList<Category>();
+		List<Category> categories = null;
 		try {
 			HibernateUtil.beginTransaction();
 			categories = categoryDao.getAllCategory();
 			HibernateUtil.commitTransaction();
 		} catch(Exception ex) {
+			HibernateUtil.rollbackTransaction();
 			LOG.error("Get all Category transaction failed", ex);
 		}
-		return categories;
+		return categories != null ? categories : new ArrayList<Category>();
 	}
 	
 	public List<Category> getCategoryByVisible(boolean visible) {
-		List<Category> categories = new ArrayList<Category>();
+		List<Category> categories = null;
 		try {
 			HibernateUtil.beginTransaction();
 			categories = categoryDao.getCategoryByVisible(visible);
 			HibernateUtil.commitTransaction();
 		} catch(Exception ex) {
+			HibernateUtil.rollbackTransaction();
 			LOG.error("Get all Category transaction failed", ex);
 		}
-		return categories;
+		return categories != null ? categories : new ArrayList<Category>();
 	}
 	
 	public Category getById(Long id) {
@@ -65,6 +67,7 @@ public class CategoryManager implements CategoryManagerInterface {
 			category = categoryDao.findByID(Category.class, id);
 			HibernateUtil.commitTransaction();
 		} catch(Exception ex) {
+			HibernateUtil.rollbackTransaction();
 			LOG.error("Get Category by id transaction failed", ex);
 		}
 		return category;

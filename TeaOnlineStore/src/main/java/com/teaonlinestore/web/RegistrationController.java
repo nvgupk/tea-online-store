@@ -1,6 +1,7 @@
 package com.teaonlinestore.web;
 
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,41 +17,27 @@ import com.teaonlinestore.model.Address;
 import com.teaonlinestore.model.Customer;
 import com.teaonlinestore.service.CustomerManager;
 import com.teaonlinestore.service.CustomerManagerInterface;
+import com.teaonlinestore.utils.FileUtil;
+import com.teaonlinestore.web.component.RegistrationParameterValidation;
+import com.teaonlinestore.web.component.RequestsParametersValidation;
 
-/**
- * Servlet implementation class Registration
- */
 public class RegistrationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RegistrationController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
-		CustomerManagerInterface customerManager = new CustomerManager();
-		Customer customer = customerManager.getCustomerByEmail(email);
-		Boolean isCustomerRegistered = null;
-		if(customer == null) {
-			isCustomerRegistered = false;
-		} else {
-			isCustomerRegistered = true;
+		Properties infoProperties = FileUtil.getProperties("info-message.properties");
+		if(email == null) {
+			redirectToInfoPage(request, response, infoProperties.getProperty("incorrect-form-parameters"));
 		}
+		CustomerManagerInterface customerManager = new CustomerManager();
+		Customer customer = customerManager.getRegisteredCustomerByEmail(email);
+		Boolean isCustomerRegistered = customer == null ? false : true;
 		String isAjax = request.getParameter("ajax");
 		if (isAjax != null) {
 			JSONObject json = new JSONObject();
@@ -58,7 +45,11 @@ public class RegistrationController extends HttpServlet {
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(json.toJSONString());
-		} else if(!isCustomerRegistered){
+		} else {
+			RequestsParametersValidation parametersValidation = new RegistrationParameterValidation();
+			if(!parametersValidation.checkForNull(request) || isCustomerRegistered) {
+				redirectToInfoPage(request, response, infoProperties.getProperty("incorrect-form-parameters"));
+			}
 			Customer newCustomer = new Customer();
 			newCustomer.setEmail(email);
 			newCustomer.setFirstName(request.getParameter("name"));
@@ -79,5 +70,11 @@ public class RegistrationController extends HttpServlet {
 			response.sendRedirect("welcome.jsp");	
 		}
 	}
-
+	
+	private void redirectToInfoPage(HttpServletRequest request, HttpServletResponse response, String message) throws ServletException, IOException {
+		request.setAttribute("message", message);
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/infopage.jsp");
+		view.forward(request, response);
+	}
+	
 }

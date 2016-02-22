@@ -6,7 +6,6 @@ import com.teaonlinestore.dao.DaoFactory;
 import com.teaonlinestore.dao.HibernateDaoFactory;
 import com.teaonlinestore.dao.MakerDao;
 import com.teaonlinestore.model.Maker;
-import com.teaonlinestore.model.Tea;
 import com.teaonlinestore.utils.HibernateUtil;
 
 public class MakerManager implements MakerManagerInterface {
@@ -40,6 +39,7 @@ public class MakerManager implements MakerManagerInterface {
 			maker = makerDao.getMakerByName(name);
 			HibernateUtil.commitTransaction();
 		} catch (Exception ex){
+			HibernateUtil.rollbackTransaction();
 			LOG.error("Get Maker by name transaction failed", ex);
 		}
 		return maker;

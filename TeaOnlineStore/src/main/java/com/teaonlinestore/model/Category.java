@@ -1,9 +1,7 @@
 package com.teaonlinestore.model;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,34 +15,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "category", schema = "public")
 public class Category implements java.io.Serializable {
-	@Id
-	@Column(name = "category_id", unique = true, nullable = false)
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long categoryId;
-	@Column(name = "name", nullable = false)
 	private String name;
-	@Column(name = "visible", nullable = false)
 	private boolean visible;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
 	private List<Product> products = new ArrayList<Product>();
 
 	public Category() {
 	}
-
-	public Category(Long categoryId, String name, boolean visible) {
-		this.categoryId = categoryId;
-		this.name = name;
-		this.visible = visible;
-	}
-
-	public Category(Long categoryId, String name, boolean visible,
-			List<Product> products) {
-		this.categoryId = categoryId;
-		this.name = name;
-		this.visible = visible;
-		this.products = products;
-	}
-
+	
+	@Id
+	@Column(name = "category_id", unique = true, nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getCategoryId() {
 		return this.categoryId;
 	}
@@ -52,7 +33,8 @@ public class Category implements java.io.Serializable {
 	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
 	}
-
+	
+	@Column(name = "name", nullable = false)
 	public String getName() {
 		return this.name;
 	}
@@ -60,15 +42,17 @@ public class Category implements java.io.Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public boolean isVisible() {
+	
+	@Column(name = "visible", nullable = false)
+	public boolean getVisible() {
 		return this.visible;
 	}
 
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
-
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
 	public List<Product> getProducts() {
 		return this.products;
 	}
@@ -103,7 +87,4 @@ public class Category implements java.io.Serializable {
 		}
 		return true;
 	}
-	
-	
-	
 }

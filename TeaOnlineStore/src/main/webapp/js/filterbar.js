@@ -2,8 +2,6 @@ $(document).ready(function(){
 	$(".attribute").click(function(){
 		$(this).next().slideToggle("fast");
 	});
-	console.log($('input[name=lowestPrice]').val());
-	console.log($('input[name=highestPrice]').val());
 	$( "#slider-price" ).slider({
 		range:true,
 		min: parseFloat($('input[name=lowestPrice]').val()),

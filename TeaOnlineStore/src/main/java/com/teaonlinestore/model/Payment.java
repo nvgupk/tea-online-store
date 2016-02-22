@@ -13,55 +13,44 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "peyment", schema = "public")
-public class Peyment implements java.io.Serializable {
-	@Id
-	@Column(name = "peyment_id", unique = true, nullable = false)
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long peymentId;
-	@Column(name = "name", nullable = false)
+@Table(name = "payment", schema = "public")
+public class Payment implements java.io.Serializable {
+	private Long paymentId;
 	private String name;
-	@Column(name = "description")
 	private String description;
-	@Column(name = "visible", nullable = false)
-	private boolean visible;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "peyment")
+	private Boolean visible;
 	private List<Purchase> purchases = new ArrayList<Purchase>();
-
-	public Peyment() {
+	
+	public Payment() {
 	}
 
-	public Peyment(Long peymentId, String name, boolean visible) {
-		this.peymentId = peymentId;
+	public Payment(String name, Boolean visible) {
 		this.name = name;
 		this.visible = visible;
 	}
-
-	public Peyment(Long peymentId, String name, String description,
-			boolean visible, List<Purchase> purchases) {
-		this.peymentId = peymentId;
-		this.name = name;
-		this.description = description;
-		this.visible = visible;
-		this.purchases = purchases;
+	
+	@Id
+	@Column(name = "payment_id", unique = true, nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public Long getPaymentId() {
+		return this.paymentId;
 	}
 
-	public Long getPeymentId() {
-		return this.peymentId;
+	public void setPaymentId(Long paymentId) {
+		this.paymentId = paymentId;
 	}
-
-	public void setPeymentId(Long peymentId) {
-		this.peymentId = peymentId;
-	}
-
+	
+	@Column(name = "name", nullable = false)
 	public String getName() {
 		return this.name;
 	}
-
+	
+	
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+	@Column(name = "description")
 	public String getDescription() {
 		return this.description;
 	}
@@ -69,15 +58,17 @@ public class Peyment implements java.io.Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	public boolean isVisible() {
+	
+	@Column(name = "visible", nullable = false)
+	public Boolean getVisible() {
 		return this.visible;
 	}
 
-	public void setVisible(boolean visible) {
+	public void setVisible(Boolean visible) {
 		this.visible = visible;
 	}
-
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "payment")
 	public List<Purchase> getPurhases() {
 		return this.purchases;
 	}

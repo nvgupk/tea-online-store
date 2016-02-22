@@ -1,0 +1,80 @@
+.sort_wrapper, .page_wrapper{
+	font: 14px Verdana;
+	color:#68635C;
+	width: 809px;
+	height: 30px;
+	margin: 45px auto 0 auto;
+	background-color: #FBFBF9;
+	float:right;
+}
+
+.page_wrapper {
+	margin: 20px auto 0 auto;
+}
+
+#sort {
+	float: left;
+	margin: 5px 0 0 0;
+	padding: 0;
+	background: url(../Images/arrow.png) no-repeat right  #CCC8A4;
+}
+
+#sortBy_label {
+	float: left;
+	margin: 8px 5px 0 0;
+}
+
+#page {
+	float: right;
+	width: 280px;
+	height: 30px;
+	margin: 0 15px 0 0;
+}
+
+#sort select {
+	font: 14px Verdana;
+	background: transparent;
+	border: 1px solid #CCCCCC;
+	color: #68635C;
+	margin: 0;
+	width: 202px;
+	height: 22px;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+
+#sort option {
+	background-color: #ffffff;
+}
+
+#sort select:hover {
+	cursor:pointer;
+}
+
+#page ul li {
+	display:inline;
+	border: 1px solid #8BA04F;
+	border-radius:3px;
+	padding: 4px 5px 4px 5px;
+}
+
+#page ul {
+	margin: 6px 0 0 0;
+	padding: 0;
+}
+
+#page ul li:hover {
+	border: 1px solid #8BA04F; 
+	background-color: #8BA04F;
+	color:#ffffff;
+	cursor: pointer;
+}
+
+#page ul li:active {
+	border: 2px solid #819449; 
+}
+
+.selected_page {
+	background-color: #8BA04F;
+	color:#ffffff;
+}

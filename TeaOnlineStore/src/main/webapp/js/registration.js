@@ -51,6 +51,7 @@ $(document).ready(function() {
 		} else {
 			$("#email_status_img").css("visibility","hidden");
 			$("input[name=email]").css("border-color","#CCCCCC");
+			validEmail = false;
 		}
 	});
 	
@@ -93,6 +94,8 @@ $(document).ready(function() {
 			$("input[name=password]").css("border-color","#CCCCCC");
 			$("#confPassword_status_img").css("visibility","hidden");
 			$("#password_status_img").css("visibility","hidden");
+			validPasswordConfirm = false;
+			validPasswordLength = false;
 		}
 	});
 	
@@ -101,6 +104,7 @@ $(document).ready(function() {
 		if(phonenumber == "") {
 			$("#phonenumber_status_img").css("visibility","hidden");
 			$("input[name=phonenumber]").css("border-color","#CCCCCC");
+			validPhoneNumber = false;
 		}
 	});
 	

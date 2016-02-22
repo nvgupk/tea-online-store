@@ -1,14 +1,13 @@
 package com.teaonlinestore.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Address {
-	@Column(name = "city")
+public class Address implements Serializable {
 	private String city;
-	
-	@Column(name = "street")
 	private String street;
 	
 	public Address() {
@@ -19,6 +18,7 @@ public class Address {
 		this.street = street;
 	}
 	
+	@Column(name = "city")
 	public String getCity() {
 		return city;
 	}
@@ -27,6 +27,7 @@ public class Address {
 		this.city = city;
 	}
 	
+	@Column(name = "street")
 	public String getStreet() {
 		return street;
 	}

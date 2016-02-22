@@ -8,11 +8,7 @@
 	position:relative;
 }
 
-#currentUser {
-	color:#8EA452;
-}
-
-#header img {
+#logo {
 	position:absolute;
 	left:15px;
 	top:65px;
@@ -28,15 +24,15 @@
 #mid_header {
 	font: 14px Verdana;
 	color:#68635C;
-	height:28px;
+	height:52px;
 	width:400px;
 	float:right;
-	margin:18px 20px 0 0;
+	margin:2px 20px 0 0;
 }
 
-#mid_header div {
-	margin:0 15px 0 0;
-	float:left;
+.mid_header_menu {
+	float: left;
+	margin:18px 15px 0 0;
 }
 
 #bot_header{
@@ -71,6 +67,7 @@
 	margin:0;
 	padding:0;
 	border:1px solid #CCCCCC;
+	z-index: 999;
 }
 
 #menu li ul li {
@@ -84,13 +81,13 @@
   display: block;
 }
 
-#menu a, #mid_header a {
+#menu a, #mid_header a, .element a {
 	text-decoration:none;
 	color:#68635C;
 }
 
 #menu li:hover a, #mid_header a:hover {
-	color:#8EA452;
+	color: #8EA452;
 }
 
 #menu li:hover ul a {
@@ -150,4 +147,83 @@ input[name="searchButton"]:active {
 	float:right;
 	padding:0;
 	margin: 8px 22px 0 0;
+}
+
+#shopping_cart {
+	width: 36px;
+	height: 36px;
+	margin-top: 8px;
+	background: url(../Images/cart.png) no-repeat center;
+	float:left;
+}
+
+#shopping_cart:hover {
+	cursor: pointer;
+}
+
+#cart_count {
+	font-size: 14px;
+	font-weight: bold;
+	color: #06953D;
+	margin-top: 17px;
+	text-align: center;
+	width: 36px;
+}
+
+#search-result {
+	width: 234px;
+	border-right: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	border-top: none;
+	border-radius: 0 0 3px 3px;
+	font: 12px Verdana;
+	color:#666666;
+	background-color:#FFFFFF;
+	position:absolute;
+	display: none;
+	z-index: 999;
+}
+
+#search-result-list {
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.element {
+	border-top: 1px solid #cccccc;
+}
+
+.element a {
+	display: block;
+	height: 40px;
+}
+
+.element a:hover {
+	color: #8EA452;
+}
+
+.element img {
+	float: left;
+}
+
+.result-name {
+	width: 140px;
+	height: 30px;
+	text-align: center;
+	padding-top: 10px;
+	float: left;
+}
+
+.result-price {
+	width: 58px;
+	height: 34px;
+	text-align: center;
+	padding-top: 6px;
+	float: right;
+}
+
+.clear {
+	clear: both;
 }

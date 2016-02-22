@@ -1,0 +1,101 @@
+#order {
+	font: 16px Verdana;
+	color:#68635c;
+	width:1100px;
+	margin:0 auto 0 auto;
+	background-color:#FFFFFF;
+}
+
+.required_star {
+	font: 12px Verdana;
+	color:#CA1F1C;
+}
+
+form[name="order"] {
+	padding:0;
+	margin:35px auto 0 auto;
+	width:880px;
+	border-bottom: 1px solid #cccccc;
+	border-top: 1px solid #cccccc;
+}
+
+#l {
+	float:left;
+	margin:0 0 0 50px;
+	width: 350px;
+}
+
+#r {
+	float:right;
+	margin:0 50px 0 0;
+	width: 350px;
+	font-size: 14px;
+}
+
+#r p {
+	font-size: 16px;
+}
+
+#add_info {
+	width: 340px;
+	resize: none;
+	height: auto;
+	text-indent: 0px;
+}
+
+.datainput {
+	font: 14px Verdana;
+	color:#666666;
+	text-indent:5px;
+	width:220px;
+	height:22px;
+	padding:0;
+	margin:0;
+	border:2px solid #CCCCCC;
+	background-color:#FBFBF9;
+}
+
+.datainput:focus {
+	border: 2px solid #68635c;
+	background-color: #ffffff;
+}
+
+h2 {
+	text-align:center;
+	color:#68635c;
+}
+
+#email_status_img {
+	visibility:hidden;
+	padding:0;
+}
+
+#phonenumber_status_img {
+	visibility:hidden;
+	padding:0;
+}
+
+#order_product_list {
+	width: 750px;
+	margin: 40px auto 0 auto;
+}
+
+.order_product {
+	width: 750px;
+}
+
+.order_footer_cart {
+	width: 750px;
+}
+
+#order_labels {
+	width: 750px;
+}
+
+.clear {
+	clear:both;
+}
+
+#submit_order {
+	display: none;
+}

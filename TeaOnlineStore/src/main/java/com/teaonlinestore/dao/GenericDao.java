@@ -1,21 +1,17 @@
 package com.teaonlinestore.dao;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Map;
-
-import com.teaonlinestore.model.Tea;
+import java.util.Set;
 
 public interface GenericDao<T, ID extends Serializable> {
 
 	public void save(T entity);
-
+	
 	public void update(T entity);
 
 	public void delete(T entity);
 
-	public T findByID(Class type, Long id);
+	public T findByID(Class type, ID id);
 	
-	public List<T> getEntitysByAttributes(Map<String, List<String>> attributeValues, Double minPrice, Double maxPrice, Class type);
-	
+	public  Set<String> getAttributeNames(Class type);
 }
